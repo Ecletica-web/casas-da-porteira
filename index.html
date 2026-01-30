@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novos fogos — Legalizar ou Vender</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script defer src="assets/main.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="index.html">Novos fogos</a>
+      <nav class="nav-links">
+        <a href="services.html">Serviços</a>
+        <a href="about.html">Sobre</a>
+        <a class="btn btn-small" href="contact.html">Avaliação Gratuita</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="container">
+        <div class="hero">
+          <div>
+            <div class="hero-media">
+              <img src="assets/Rua Bonita.png" alt="Edifício clássico em Lisboa com apartamentos e placa Vende" />
+            </div>
+          </div>
+          <div>
+            <span class="badge">Resposta em 24h • Confidencial</span>
+            <h1 class="h1">Valorizamos e legalizamos a sua casa da porteira.</h1>
+            <p class="lead">
+              Se a sua "casa da porteira" está bloqueada por questões legais ou documentação incompleta,
+              nós tratamos do processo — ou fazemos uma proposta de compra direta.
+            </p>
+            <a class="btn" href="#lead-form">Peça uma avaliação grátis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="image-text-grid form-section-unified">
+          <div class="form-compact">
+            <h2 class="h2 form-title">Peça uma avaliação grátis</h2>
+            <p class="muted form-subtitle">Preencha o essencial. Recebe resposta em 24h.</p>
+
+            <!-- IMPORTANT: only ONE form, and it has data-lead-form -->
+            <form data-lead-form
+                  action="https://script.google.com/macros/s/AKfycbzmbOLvuh7jrYtlxPgPzJTInXOWRrptNUyavrYwjwbZas7Icrr3ZYFnTIS2lMRI88x8/exec"
+                  method="POST"
+                  target="hidden_iframe"
+                  class="form-compact-fields">
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" required />
+
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+
+              <label for="phone">Telemóvel (opcional)</label>
+              <input type="tel" id="phone" name="phone" />
+
+              <label for="location">Localização do imóvel</label>
+              <input type="text" id="location" name="location" required />
+
+              <label for="objective">Objetivo</label>
+              <select id="objective" name="objective" required>
+                <option value="" selected>Selecione</option>
+                <option value="legalizar">Legalizar</option>
+                <option value="vender">Vender</option>
+                <option value="ambos">Não tenho a certeza</option>
+              </select>
+
+              <label for="message">Mensagem (opcional)</label>
+              <textarea id="message" name="message" placeholder="Explique rapidamente o que está bloqueado."></textarea>
+
+              <input type="hidden" name="source" value="homepage" />
+
+              <button class="btn" type="submit">Enviar pedido</button>
+              <div class="muted" data-form-status></div>
+            </form>
+            <iframe name="hidden_iframe" style="display:none;"></iframe>
+          </div>
+          <img src="assets/compra.png" alt="Compra" class="content-image-vertical" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section">
+      <div class="container">
+        <div class="card card-pad section-bg" style="--bg-img: url('assets/background.png');">
+          <h2 class="h2">O problema: imóveis bloqueados</h2>
+          <div class="image-text-grid">
+            <img src="assets/Casa da porteira devoluta.png" alt="Casa da porteira" class="content-image-small" />
+            <div>
+              <p class="muted">
+                Muitas casas da porteira ficam bloqueadas por falta de registos, licenças, frações não constituídas,
+                ou necessidade de aprovações. Isso impede venda e destrói valor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>O que fazemos</h2>
+        </div>
+      <div class="grid-3">
+        <div class="card card-pad">
+          <div class="icon-wrapper">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <h3 class="h3">Legalização</h3>
+          <p class="muted">Tratamos da regularização e documentação necessária.</p>
+          <div class="service-image-wrapper" style="margin-top: 20px;">
+            <img src="assets/contrato.png" alt="Legalização" class="service-image-large" />
+          </div>
+        </div>
+        <div class="card card-pad">
+          <div class="icon-wrapper">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="h3">Compra direta</h3>
+          <p class="muted">Se preferir vender, fazemos uma proposta de compra.</p>
+          <div class="service-image-wrapper" style="margin-top: 20px;">
+            <img src="assets/compra.png" alt="Compra direta" class="service-image-large" />
+          </div>
+        </div>
+        <div class="card card-pad">
+          <div class="icon-wrapper">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3 class="h3">Acompanhamento</h3>
+          <p class="muted">Orientação clara e processo transparente do início ao fim.</p>
+          <div class="service-image-wrapper" style="margin-top: 20px;">
+            <img src="assets/papelada.png" alt="Papelada" class="service-image-large" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="lead-form">
+      <div class="container">
+        <div class="card card-pad section-bg" style="--bg-img: url('assets/casasdaporteira3.png');">
+          <h2 class="h2">Como funciona</h2>
+          <div class="image-text-grid">
+            <div>
+              <ol>
+                <li><b>Contacto</b>: envia-nos os dados essenciais.</li>
+                <li><b>Avaliação</b>: confirmamos viabilidade e próximos passos.</li>
+                <li><b>Execução</b>: legalização ou proposta de compra, conforme o objetivo.</li>
+              </ol>
+            </div>
+            <img src="assets/resdochao.png" alt="Rés do chão" class="content-image-small" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <h2>O que dizem os proprietários</h2>
+          <p class="muted">Feedback real de pessoas que precisavam de desbloquear a situação.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card review">
+            <div class="review-top">
+              <div class="avatar">M</div>
+              <div>
+                <p class="review-name">Marta, Lisboa</p>
+                <p class="review-meta">Aguas furtadas • Legalização</p>
+              </div>
+            </div>
+            <p class="review-text">
+              "Explicaram o caminho sem complicações e trataram do processo todo. Senti confiança desde o início."
+            </p>
+          </article>
+
+          <article class="card review">
+            <div class="review-top">
+              <div class="avatar">R</div>
+              <div>
+                <p class="review-name">Rui, Oeiras</p>
+                <p class="review-meta">R/chão • Venda</p>
+              </div>
+            </div>
+            <p class="review-text">
+              "Precisava de resolver rápido. Fizeram uma proposta clara e ajudaram a organizar os documentos."
+            </p>
+          </article>
+
+          <article class="card review">
+            <div class="review-top">
+              <div class="avatar">A</div>
+              <div>
+                <p class="review-name">Ana, Almada</p>
+                <p class="review-meta">Casa da porteira • Opção híbrida</p>
+              </div>
+            </div>
+            <p class="review-text">
+              "Sem conversa vaga. Disseram o que faltava, prazos e próximos passos. Comunicação sempre regular."
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Perguntas frequentes</h2>
+          <p class="muted">Respostas rápidas — sem linguagem confusa.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item" open>
+            <summary>O que é uma "casa da porteira" e porque fica bloqueada?</summary>
+            <p>
+              Normalmente são espaços como rés do chão, anexos ou águas furtadas que ficaram com registos/fracções
+              incompletos, licenças em falta ou documentação desorganizada — e isso trava venda e valorização.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Quanto tempo demora a avaliação?</summary>
+            <p>Em regra, respondemos em 24h com perguntas simples e um caminho sugerido (legalizar, vender ou híbrido).</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Que dados pedem no formulário?</summary>
+            <p>Nome, email, localização e objetivo. Telemóvel e mensagem são opcionais (ajudam a acelerar).</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Os meus dados são confidenciais?</summary>
+            <p>Sim. Usamos os dados apenas para analisar e responder ao seu pedido. Sem spam.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Novos fogos</div>
+        <p class="muted">
+          Ajudamos proprietários a legalizar ou vender casas da porteira com clareza, discrição e execução.
+        </p>
+
+        <div class="footer-social">
+          <a class="icon-link" href="#" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <a href="services.html">Serviços</a>
+        <a href="about.html">Sobre</a>
+        <a href="contact.html">Avaliação Gratuita</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Suporte</h4>
+        <a href="#faq">Perguntas Frequentes</a>
+        <a href="contact.html">Contacto</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Serviço</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="muted">© <span id="year"></span> Novos fogos. Todos os direitos reservados.</p>
+        <a class="btn btn-primary" href="contact.html">Pedir avaliação grátis</a>
+        <p class="muted">Confidencialidade • Resposta em 24h</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
