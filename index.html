@@ -57,25 +57,50 @@
                   method="POST"
                   target="hidden_iframe"
                   class="form-compact-fields">
-              <label for="name">Nome</label>
-              <input type="text" id="name" name="name" required />
+              <div class="form-field-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required />
+              </div>
 
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
+              <div class="form-field-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
 
-              <label for="phone">Telemóvel (opcional)</label>
-              <input type="tel" id="phone" name="phone" />
+              <div class="form-field-group">
+                <label for="phone">Telemóvel (opcional)</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
 
-              <label for="location">Localização do imóvel</label>
-              <input type="text" id="location" name="location" required />
+              <div class="form-field-group">
+                <label for="location">Localização do imóvel</label>
+                <input type="text" id="location" name="location" required />
+              </div>
 
-              <label for="objective">Objetivo</label>
-              <select id="objective" name="objective" required>
-                <option value="" selected>Selecione</option>
-                <option value="legalizar">Legalizar</option>
-                <option value="vender">Vender</option>
-                <option value="ambos">Não tenho a certeza</option>
-              </select>
+              <div class="form-field-group">
+                <label for="freguesia">Freguesia (opcional)</label>
+                <input type="text" id="freguesia" name="freguesia" />
+              </div>
+
+              <div class="form-field-group">
+                <label for="num_condominos">Número de condóminos (opcional)</label>
+                <input type="number" id="num_condominos" name="num_condominos" min="0" />
+              </div>
+
+              <div class="form-field-group">
+                <label for="num_fracoes">Número de frações (opcional)</label>
+                <input type="number" id="num_fracoes" name="num_fracoes" min="0" />
+              </div>
+
+              <div class="form-field-group" style="grid-column: span 2;">
+                <label for="objective">Objetivo</label>
+                <select id="objective" name="objective" required>
+                  <option value="" selected>Selecione</option>
+                  <option value="legalizar">Legalizar</option>
+                  <option value="vender">Vender</option>
+                  <option value="ambos">Não tenho a certeza</option>
+                </select>
+              </div>
 
               <label for="message">Mensagem (opcional)</label>
               <textarea id="message" name="message" placeholder="Explique rapidamente o que está bloqueado."></textarea>
