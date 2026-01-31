@@ -147,7 +147,11 @@ main{padding:60px 0 40px}
   margin-right: auto;
 }
 @media (max-width: 768px){
-  .hero{padding: 32px 24px; gap:24px}
+  .hero{
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 24px;
+  }
 }
 
 .form-compact{
@@ -308,6 +312,11 @@ main{padding:60px 0 40px}
   max-width: var(--max);
   margin: 0 auto;
 }
+@media (max-width: 768px){
+  .section > .grid-3{
+    padding: 16px;
+  }
+}
 
 /* Cards dentro de containers azuis devem ser brancos */
 .card .card,
@@ -320,8 +329,11 @@ main{padding:60px 0 40px}
 .card:hover{box-shadow: var(--shadow-lg); transform: translateY(-2px);}
 .card-pad{padding:32px}
 @media (max-width: 768px){
-  .card{padding: 20px}
-  .card-pad{padding: 24px}
+  .card{padding: 16px}
+  .card-pad{padding: 16px}
+  .card.section-bg{padding: 20px 16px}
+  .section-head + .grid-3 .card{padding: 16px}
+  .models-container{padding: 16px !important}
 }
 
 .grid-3{
@@ -792,8 +804,9 @@ form{display:grid; gap:16px}
   .image-text-grid{ grid-template-columns: 1fr; }
 }
 @media (max-width: 768px){
-  .image-text-grid{padding: 24px; gap: 24px}
+  .image-text-grid{padding: 16px; gap: 20px}
   .form-section-unified{padding: 16px}
+  .card .image-text-grid{padding: 12px; gap: 16px}
 }
 
 /* Additional refinements */
