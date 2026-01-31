@@ -36,14 +36,16 @@
           </p>
 
           <img src="assets/Casa da porteira devoluta.png" alt="Casa da porteira" style="width: 100%; height: auto; border-radius: 12px; margin-top: 24px; box-shadow: var(--shadow-lg); object-fit: contain;" />
+          <img src="assets/casa reabilitada.png" alt="Casa reabilitada" style="width: 100%; height: auto; border-radius: 12px; margin-top: 24px; box-shadow: var(--shadow-lg); object-fit: contain;" />
         </div>
 
-        <div class="card card-pad">
-          <h2 class="h2">Peça uma avaliação grátis</h2>
-          <p class="muted">Sem spam. Usamos os seus dados apenas para responder.</p>
+        <div class="card card-pad form-compact">
+          <h2 class="h2 form-title">Peça uma avaliação grátis</h2>
+          <p class="muted form-subtitle">Sem spam. Usamos os seus dados apenas para responder.</p>
 
           <!-- SAME system: one form, data-lead-form, same IDs -->
           <form data-lead-form
+                class="form-compact-fields"
                 action="https://script.google.com/macros/s/AKfycbzmbOLvuh7jrYtlxPgPzJTInXOWRrptNUyavrYwjwbZas7Icrr3ZYFnTIS2lMRI88x8/exec"
                 method="POST"
                 target="hidden_iframe">
@@ -78,11 +80,6 @@
             </div>
 
             <div class="form-field-group">
-              <label for="num_fracoes">Número de frações (opcional)</label>
-              <input type="number" id="num_fracoes" name="num_fracoes" min="0" />
-            </div>
-
-            <div class="form-field-group" style="grid-column: span 2;">
               <label for="objective">Objetivo</label>
               <select id="objective" name="objective" required>
                 <option value="" selected>Selecione</option>
@@ -90,6 +87,11 @@
                 <option value="vender">Vender</option>
                 <option value="ambos">Não tenho a certeza</option>
               </select>
+            </div>
+
+            <div class="form-field-group">
+              <label for="num_fracoes">Número de frações (opcional)</label>
+              <input type="number" id="num_fracoes" name="num_fracoes" min="0" />
             </div>
 
             <label for="message">Mensagem (opcional)</label>
