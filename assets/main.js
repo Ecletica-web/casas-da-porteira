@@ -7,99 +7,89 @@
   if (!forms.length) return;
 
   forms.forEach((form) => {
-    // Create hidden iframe for form submission
-    const iframe = document.createElement("iframe");
-    iframe.name = "hidden_iframe_" + Date.now();
-    iframe.style.display = "none";
-    form.parentNode.appendChild(iframe);
-    form.target = iframe.name;
+    // Ensure iframe exists (create if not in HTML)
+    let iframe = form.parentNode.querySelector('iframe[name="hidden_iframe"]');
+    if (!iframe) {
+      iframe = document.createElement("iframe");
+      iframe.name = "hidden_iframe";
+      iframe.style.display = "none";
+      form.parentNode.appendChild(iframe);
+    }
+    form.target = "hidden_iframe";
 
     const statusEl = form.querySelector("[data-form-status]");
     const btn = form.querySelector('button[type="submit"]');
 
     // Add UTMs and user agent as hidden fields
     const qs = new URLSearchParams(window.location.search);
-    if (qs.get("utm_source")) {
-      let input = form.querySelector('input[name="utm_source"]');
-      if (!input) {
-        input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "utm_source";
-        form.appendChild(input);
-      }
-      input.value = qs.get("utm_source");
-    }
-    if (qs.get("utm_medium")) {
-      let input = form.querySelector('input[name="utm_medium"]');
-      if (!input) {
-        input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "utm_medium";
-        form.appendChild(input);
-      }
-      input.value = qs.get("utm_medium");
-    }
-    if (qs.get("utm_campaign")) {
-      let input = form.querySelector('input[name="utm_campaign"]');
-      if (!input) {
-        input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "utm_campaign";
-        form.appendChild(input);
-      }
-      input.value = qs.get("utm_campaign");
-    }
     
-    // Add user agent
-    let userAgentInput = form.querySelector('input[name="user_agent"]');
-    if (!userAgentInput) {
-      userAgentInput = document.createElement("input");
-      userAgentInput.type = "hidden";
-      userAgentInput.name = "user_agent";
-      form.appendChild(userAgentInput);
+    function addHiddenField(name, value) {
+      if (!value) return;
+      let input = form.querySelector(`input[name="${name}"]`);
+      if (!input) {
+        input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        form.appendChild(input);
+      }
+      input.value = value;
     }
-    userAgentInput.value = navigator.userAgent;
+
+    addHiddenField("utm_source", qs.get("utm_source"));
+    addHiddenField("utm_medium", qs.get("utm_medium"));
+    addHiddenField("utm_campaign", qs.get("utm_campaign"));
+    addHiddenField("user_agent", navigator.userAgent);
+
+    let submitted = false;
+    let successTimeout;
 
     form.addEventListener("submit", (e) => {
+      // Don't prevent default - let form submit naturally to iframe
+      if (submitted) {
+        e.preventDefault();
+        return false;
+      }
+      
+      submitted = true;
       if (btn) btn.disabled = true;
       if (statusEl) statusEl.textContent = "A enviar...";
 
-      // Listen for iframe load to detect submission success
-      iframe.onload = () => {
-        setTimeout(() => {
-          if (statusEl) statusEl.textContent = "Enviado ✅ Vamos responder em 24h.";
-          
-          // preserve source value before reset
-          const source = form.querySelector('input[name="source"]');
-          const sourceValue = source ? source.value : null;
-          
-          form.reset();
+      // Preserve values before reset
+      const source = form.querySelector('input[name="source"]');
+      const sourceValue = source ? source.value : null;
+      const utmSourceValue = qs.get("utm_source");
+      const utmMediumValue = qs.get("utm_medium");
+      const utmCampaignValue = qs.get("utm_campaign");
 
-          // restore source field and hidden fields after reset
-          if (source && sourceValue) {
-            source.value = sourceValue;
-          }
-          
-          // Restore UTM and user agent fields
-          if (qs.get("utm_source")) {
-            const utmSource = form.querySelector('input[name="utm_source"]');
-            if (utmSource) utmSource.value = qs.get("utm_source");
-          }
-          if (qs.get("utm_medium")) {
-            const utmMedium = form.querySelector('input[name="utm_medium"]');
-            if (utmMedium) utmMedium.value = qs.get("utm_medium");
-          }
-          if (qs.get("utm_campaign")) {
-            const utmCampaign = form.querySelector('input[name="utm_campaign"]');
-            if (utmCampaign) utmCampaign.value = qs.get("utm_campaign");
-          }
-          if (userAgentInput) {
-            userAgentInput.value = navigator.userAgent;
-          }
+      // Listen for iframe load
+      const handleSuccess = () => {
+        clearTimeout(successTimeout);
+        if (statusEl) statusEl.textContent = "Enviado ✅ Vamos responder em 24h.";
+        
+        form.reset();
 
-          if (btn) btn.disabled = false;
-        }, 500);
+        // Restore hidden fields
+        if (source && sourceValue) {
+          source.value = sourceValue;
+        }
+        addHiddenField("utm_source", utmSourceValue);
+        addHiddenField("utm_medium", utmMediumValue);
+        addHiddenField("utm_campaign", utmCampaignValue);
+        addHiddenField("user_agent", navigator.userAgent);
+
+        if (btn) btn.disabled = false;
+        submitted = false;
       };
+
+      // Set up iframe load handler
+      iframe.onload = () => {
+        handleSuccess();
+      };
+
+      // Fallback: assume success after 3 seconds (Apps Script usually works even if iframe doesn't fire onload)
+      successTimeout = setTimeout(() => {
+        handleSuccess();
+      }, 3000);
     });
   });
 })();
