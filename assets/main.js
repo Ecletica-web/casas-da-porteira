@@ -7,42 +7,66 @@
   if (!forms.length) return;
 
   forms.forEach((form) => {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault(); // <-- stops redirect
+    // Create hidden iframe for form submission
+    const iframe = document.createElement("iframe");
+    iframe.name = "hidden_iframe_" + Date.now();
+    iframe.style.display = "none";
+    form.parentNode.appendChild(iframe);
+    form.target = iframe.name;
 
-      const statusEl = form.querySelector("[data-form-status]");
-      const btn = form.querySelector('button[type="submit"]');
+    const statusEl = form.querySelector("[data-form-status]");
+    const btn = form.querySelector('button[type="submit"]');
 
-      const endpoint = form.getAttribute("action"); // uses your existing URL
-      const fd = new FormData(form);
+    // Add UTMs and user agent as hidden fields
+    const qs = new URLSearchParams(window.location.search);
+    if (qs.get("utm_source")) {
+      let input = form.querySelector('input[name="utm_source"]');
+      if (!input) {
+        input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "utm_source";
+        form.appendChild(input);
+      }
+      input.value = qs.get("utm_source");
+    }
+    if (qs.get("utm_medium")) {
+      let input = form.querySelector('input[name="utm_medium"]');
+      if (!input) {
+        input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "utm_medium";
+        form.appendChild(input);
+      }
+      input.value = qs.get("utm_medium");
+    }
+    if (qs.get("utm_campaign")) {
+      let input = form.querySelector('input[name="utm_campaign"]');
+      if (!input) {
+        input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "utm_campaign";
+        form.appendChild(input);
+      }
+      input.value = qs.get("utm_campaign");
+    }
+    
+    // Add user agent
+    let userAgentInput = form.querySelector('input[name="user_agent"]');
+    if (!userAgentInput) {
+      userAgentInput = document.createElement("input");
+      userAgentInput.type = "hidden";
+      userAgentInput.name = "user_agent";
+      form.appendChild(userAgentInput);
+    }
+    userAgentInput.value = navigator.userAgent;
 
-      // add UTMs + user agent without changing your HTML
-      const qs = new URLSearchParams(window.location.search);
-      fd.set("utm_source", qs.get("utm_source") || "");
-      fd.set("utm_medium", qs.get("utm_medium") || "");
-      fd.set("utm_campaign", qs.get("utm_campaign") || "");
-      fd.set("user_agent", navigator.userAgent);
+    form.addEventListener("submit", (e) => {
+      if (btn) btn.disabled = true;
+      if (statusEl) statusEl.textContent = "A enviar...";
 
-      try {
-        if (btn) btn.disabled = true;
-        if (statusEl) statusEl.textContent = "A enviar...";
-
-        // send as form-urlencoded (avoids CORS pain)
-        const res = await fetch(endpoint, {
-          method: "POST",
-          body: fd,
-        });
-
-        // Apps Script might return JSON or text depending on your doPost
-        let ok = false;
-        try {
-          const json = await res.json();
-          ok = !!json.ok;
-        } catch {
-          ok = res.ok;
-        }
-
-        if (ok) {
+      // Listen for iframe load to detect submission success
+      iframe.onload = () => {
+        setTimeout(() => {
           if (statusEl) statusEl.textContent = "Enviado ✅ Vamos responder em 24h.";
           
           // preserve source value before reset
@@ -51,19 +75,31 @@
           
           form.reset();
 
-          // restore source field after reset
+          // restore source field and hidden fields after reset
           if (source && sourceValue) {
             source.value = sourceValue;
           }
-        } else {
-          if (statusEl) statusEl.textContent = "Falha ao enviar. Tenta novamente.";
-        }
-      } catch (err) {
-        console.error(err);
-        if (statusEl) statusEl.textContent = "Erro de rede. Tenta novamente.";
-      } finally {
-        if (btn) btn.disabled = false;
-      }
+          
+          // Restore UTM and user agent fields
+          if (qs.get("utm_source")) {
+            const utmSource = form.querySelector('input[name="utm_source"]');
+            if (utmSource) utmSource.value = qs.get("utm_source");
+          }
+          if (qs.get("utm_medium")) {
+            const utmMedium = form.querySelector('input[name="utm_medium"]');
+            if (utmMedium) utmMedium.value = qs.get("utm_medium");
+          }
+          if (qs.get("utm_campaign")) {
+            const utmCampaign = form.querySelector('input[name="utm_campaign"]');
+            if (utmCampaign) utmCampaign.value = qs.get("utm_campaign");
+          }
+          if (userAgentInput) {
+            userAgentInput.value = navigator.userAgent;
+          }
+
+          if (btn) btn.disabled = false;
+        }, 500);
+      };
     });
   });
 })();
