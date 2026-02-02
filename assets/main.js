@@ -1,64 +1,69 @@
-(() => {
+(function () {
   // Footer year
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  const form = document.querySelector("form[data-lead-form]");
-  if (!form) return;
+  const forms = document.querySelectorAll("form[data-lead-form]");
+  if (!forms.length) return;
 
-  const statusEl = document.querySelector("[data-form-status]");
+  forms.forEach((form) => {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // <-- stops redirect
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    
-    if (statusEl) statusEl.textContent = "A enviar…";
+      const statusEl = form.querySelector("[data-form-status]");
+      const btn = form.querySelector('button[type="submit"]');
 
-    // Collect form data
-    const formData = new FormData(form);
-    const data = {};
-    
-    // Convert FormData to object
-    for (const [key, value] of formData.entries()) {
-      if (value) data[key] = value;
-    }
+      const endpoint = form.getAttribute("action"); // uses your existing URL
+      const fd = new FormData(form);
 
-    // Add UTM parameters from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("utm_source")) data.utm_source = urlParams.get("utm_source");
-    if (urlParams.get("utm_medium")) data.utm_medium = urlParams.get("utm_medium");
-    if (urlParams.get("utm_campaign")) data.utm_campaign = urlParams.get("utm_campaign");
+      // add UTMs + user agent without changing your HTML
+      const qs = new URLSearchParams(window.location.search);
+      fd.set("utm_source", qs.get("utm_source") || "");
+      fd.set("utm_medium", qs.get("utm_medium") || "");
+      fd.set("utm_campaign", qs.get("utm_campaign") || "");
+      fd.set("user_agent", navigator.userAgent);
 
-    // Add user agent
-    data.user_agent = navigator.userAgent;
+      try {
+        if (btn) btn.disabled = true;
+        if (statusEl) statusEl.textContent = "A enviar...";
 
-    // Fix field name: num_condominos -> num_condominios (to match script expectations)
-    if (data.num_condominos) {
-      data.num_condominios = data.num_condominos;
-      delete data.num_condominos;
-    }
+        // send as form-urlencoded (avoids CORS pain)
+        const res = await fetch(endpoint, {
+          method: "POST",
+          body: fd,
+        });
 
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+        // Apps Script might return JSON or text depending on your doPost
+        let ok = false;
+        try {
+          const json = await res.json();
+          ok = !!json.ok;
+        } catch {
+          ok = res.ok;
+        }
 
-      const result = await response.json();
+        if (ok) {
+          if (statusEl) statusEl.textContent = "Enviado ✅ Vamos responder em 24h.";
+          
+          // preserve source value before reset
+          const source = form.querySelector('input[name="source"]');
+          const sourceValue = source ? source.value : null;
+          
+          form.reset();
 
-      if (result.ok) {
-        if (statusEl) statusEl.textContent = "Enviado com sucesso. Resposta em 24h.";
-        alert("Obrigado! Recebemos o seu pedido. Resposta em 24h.");
-        form.reset();
-      } else {
-        throw new Error(result.error || "Erro ao enviar");
+          // restore source field after reset
+          if (source && sourceValue) {
+            source.value = sourceValue;
+          }
+        } else {
+          if (statusEl) statusEl.textContent = "Falha ao enviar. Tenta novamente.";
+        }
+      } catch (err) {
+        console.error(err);
+        if (statusEl) statusEl.textContent = "Erro de rede. Tenta novamente.";
+      } finally {
+        if (btn) btn.disabled = false;
       }
-    } catch (err) {
-      if (statusEl) statusEl.textContent = "Erro ao enviar. Tente novamente.";
-      console.error("Form submission error:", err);
-      alert("Erro ao enviar o formulário. Por favor, tente novamente.");
-    }
+    });
   });
 })();
