@@ -90,6 +90,11 @@
           btn.textContent = "Enviar pedido";
         }
         
+        // Update URL without page reload for Google Ads conversion tracking
+        const url = new URL(window.location.href);
+        url.searchParams.set('form', 'success');
+        window.history.pushState({}, '', url.toString());
+        
         form.reset();
 
         // Restore hidden fields
