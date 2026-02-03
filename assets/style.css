@@ -552,6 +552,9 @@ input:focus, textarea:focus, select:focus{
   color: rgba(255,255,255,.9);
   margin-top: 100px;
 }
+.site-footer .container{
+  padding: 0 24px;
+}
 .footer-grid{
   padding: 64px 0 48px;
   display:grid;
@@ -622,6 +625,9 @@ input:focus, textarea:focus, select:focus{
   .footer-bottom-inner{ flex-direction: column; text-align: center; }
 }
 @media (max-width: 768px){
+  .site-footer .container{
+    padding: 0 16px;
+  }
   .footer-grid{ 
     grid-template-columns: 1fr; 
     gap: 32px; 
