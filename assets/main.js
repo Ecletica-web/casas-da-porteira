@@ -7,8 +7,16 @@
   if (!forms.length) return;
 
   forms.forEach((form) => {
-    // Ensure iframe exists
+    // Ensure iframe exists - check both parent and form container
     let iframe = form.parentNode.querySelector('iframe[name="hidden_iframe"]');
+    if (!iframe) {
+      // Try to find it in the form's container
+      const formContainer = form.closest('.form-compact, .card, .container');
+      if (formContainer) {
+        iframe = formContainer.querySelector('iframe[name="hidden_iframe"]');
+      }
+    }
+    
     if (!iframe) {
       iframe = document.createElement("iframe");
       iframe.name = "hidden_iframe";
@@ -17,9 +25,16 @@
       iframe.style.width = "0";
       iframe.style.height = "0";
       iframe.style.border = "none";
-      form.parentNode.appendChild(iframe);
+      iframe.style.position = "absolute";
+      iframe.style.left = "-9999px";
+      // Insert after form, not as child
+      form.parentNode.insertBefore(iframe, form.nextSibling);
     }
-    form.target = iframe.name;
+    
+    // Ensure form has target set
+    if (!form.target || form.target !== "hidden_iframe") {
+      form.target = "hidden_iframe";
+    }
 
     const statusEl = form.querySelector("[data-form-status]");
     const btn = form.querySelector('button[type="submit"]');
@@ -99,53 +114,70 @@
         isSubmitting = false;
       };
 
-      // Try to detect iframe load
+      // Try to detect iframe load - use multiple methods
       let loadHandler = null;
       let timeoutHandler = null;
       let errorHandler = null;
+      let successCalled = false;
+
+      const cleanup = () => {
+        if (loadHandler && iframe) iframe.removeEventListener('load', loadHandler);
+        if (errorHandler && iframe) iframe.removeEventListener('error', errorHandler);
+        if (timeoutHandler) clearTimeout(timeoutHandler);
+      };
+
+      const callSuccessOnce = () => {
+        if (successCalled) return;
+        successCalled = true;
+        cleanup();
+        handleSuccess();
+      };
 
       loadHandler = function() {
         try {
           // Check if iframe loaded successfully
-          if (iframe.contentWindow && iframe.contentWindow.location) {
-            const iframeUrl = iframe.contentWindow.location.href;
-            if (iframeUrl && iframeUrl.includes('script.google.com')) {
-              // Success - Apps Script responded
-              if (loadHandler) iframe.removeEventListener('load', loadHandler);
-              if (timeoutHandler) clearTimeout(timeoutHandler);
-              handleSuccess();
+          if (iframe && iframe.contentWindow) {
+            try {
+              const iframeUrl = iframe.contentWindow.location.href;
+              if (iframeUrl && (iframeUrl.includes('script.google.com') || iframeUrl.includes('accounts.google.com'))) {
+                // Success - Apps Script responded
+                callSuccessOnce();
+                return;
+              }
+            } catch (e) {
+              // Cross-origin - this is expected, assume success
+              callSuccessOnce();
               return;
             }
           }
+          // Iframe loaded but couldn't check URL - assume success
+          callSuccessOnce();
         } catch (e) {
-          // Cross-origin - assume success if iframe loaded
-          if (loadHandler) iframe.removeEventListener('load', loadHandler);
-          if (timeoutHandler) clearTimeout(timeoutHandler);
-          handleSuccess();
+          // Any error - assume success (form was submitted)
+          callSuccessOnce();
         }
       };
 
       errorHandler = function() {
-        if (errorHandler) iframe.removeEventListener('error', errorHandler);
         // Even on error, assume success after delay (form was submitted)
         setTimeout(() => {
-          handleSuccess();
-        }, 1500);
+          callSuccessOnce();
+        }, 1000);
       };
 
-      // Multiple fallbacks
-      iframe.addEventListener('load', loadHandler);
-      iframe.addEventListener('error', errorHandler);
+      // Set up listeners
+      if (iframe) {
+        iframe.addEventListener('load', loadHandler);
+        iframe.addEventListener('error', errorHandler);
+      }
       
-      // Fallback timeout - assume success after 2.5 seconds
+      // Primary fallback timeout - assume success after 2 seconds
       timeoutHandler = setTimeout(() => {
-        if (loadHandler) iframe.removeEventListener('load', loadHandler);
-        if (errorHandler) iframe.removeEventListener('error', errorHandler);
-        // Assume success - form was submitted to iframe
-        handleSuccess();
-      }, 2500);
+        callSuccessOnce();
+      }, 2000);
 
       // Let form submit naturally to iframe
+      // Don't prevent default - form should submit normally
       return true;
     });
   });
