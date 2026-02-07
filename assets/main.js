@@ -63,13 +63,16 @@
     let isSubmitting = false;
 
     form.addEventListener("submit", async function(e) {
-      e.preventDefault(); // Always prevent default to handle submission ourselves
-      
       if (isSubmitting) {
+        e.preventDefault();
         return false;
       }
 
       isSubmitting = true;
+      
+      // Prevent default so we can add fields first
+      e.preventDefault();
+      
       if (btn) {
         btn.disabled = true;
         btn.textContent = "A enviar...";
@@ -129,10 +132,24 @@
       }
 
       // Ensure all hidden fields are up to date before submission
-      addHiddenField("utm_source", utmSourceValue);
-      addHiddenField("utm_medium", utmMediumValue);
-      addHiddenField("utm_campaign", utmCampaignValue);
-      addHiddenField("user_agent", navigator.userAgent);
+      // Always add these fields, even if empty (so they're sent)
+      const hiddenFields = {
+        "utm_source": utmSourceValue || "",
+        "utm_medium": utmMediumValue || "",
+        "utm_campaign": utmCampaignValue || "",
+        "user_agent": navigator.userAgent
+      };
+      
+      Object.keys(hiddenFields).forEach(key => {
+        let input = form.querySelector(`input[name="${key}"]`);
+        if (!input) {
+          input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          form.appendChild(input);
+        }
+        input.value = hiddenFields[key];
+      });
 
       // Log form data for debugging (without sensitive info)
       const formDataObj = {};
@@ -142,8 +159,36 @@
       }
       console.log('Form data to submit:', formDataObj);
 
-      // Use iframe method (most reliable for Google Apps Script)
-      // Set up iframe handlers
+      // Convert FormData to URLSearchParams for proper encoding
+      const params = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        params.append(key, value || "");
+      }
+
+      // Try fetch with form-urlencoded (works better with Google Apps Script)
+      try {
+        console.log('Attempting fetch with form-urlencoded...');
+        const response = await fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors", // Required for Google Apps Script web apps
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: params.toString()
+        });
+        
+        // With no-cors, we can't read response, but request is sent
+        console.log('Fetch request completed (no-cors mode)');
+        setTimeout(() => {
+          handleSuccess();
+        }, 1000);
+        return;
+      } catch (fetchError) {
+        console.warn('Fetch failed, using iframe method:', fetchError);
+      }
+
+      // Fallback to iframe method
+      // Set up iframe handlers BEFORE submitting
       let loadHandler = null;
       let timeoutHandler = null;
       let successCalled = false;
@@ -162,10 +207,10 @@
 
       loadHandler = function() {
         console.log('Iframe loaded - form submitted successfully');
-        // Small delay to ensure data is processed
+        // Small delay to ensure data is processed by Google Apps Script
         setTimeout(() => {
           callSuccessOnce();
-        }, 300);
+        }, 800);
       };
 
       // Set up listeners BEFORE submitting
@@ -176,24 +221,41 @@
       }
       
       // Fallback timeout - if iframe doesn't load in 5 seconds, assume success anyway
-      // (form was submitted, even if we can't detect it)
       timeoutHandler = setTimeout(() => {
         console.log('Iframe timeout - assuming form was submitted');
         callSuccessOnce();
       }, 5000);
 
-      // Ensure form target is set
+      // Ensure form is properly configured
       form.target = "hidden_iframe";
+      form.method = "POST";
+      form.action = endpoint;
+      form.enctype = "application/x-www-form-urlencoded";
       
-      // Submit form to iframe (this is the most reliable method for Google Apps Script)
-      console.log('Submitting form to iframe:', endpoint);
-      try {
-        form.submit();
-      } catch (submitError) {
-        console.error('Form submit error:', submitError);
-        cleanup();
-        handleError("Erro ao enviar. Por favor, tenta novamente.");
-      }
+      // Now submit the form programmatically
+      // Use setTimeout to ensure DOM is ready
+      setTimeout(() => {
+        console.log('Submitting form to iframe:', endpoint);
+        try {
+          // Create a submit button and click it to trigger natural form submission
+          const submitBtn = document.createElement("button");
+          submitBtn.type = "submit";
+          submitBtn.style.display = "none";
+          form.appendChild(submitBtn);
+          submitBtn.click();
+          form.removeChild(submitBtn);
+        } catch (submitError) {
+          console.error('Form submit error:', submitError);
+          // Fallback: try direct submit
+          try {
+            form.submit();
+          } catch (err) {
+            console.error('Direct submit also failed:', err);
+            cleanup();
+            handleError("Erro ao enviar. Por favor, tenta novamente.");
+          }
+        }
+      }, 10);
     });
   });
 })();
