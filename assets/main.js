@@ -62,9 +62,10 @@
 
     let isSubmitting = false;
 
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault(); // Always prevent default to handle submission ourselves
+      
       if (isSubmitting) {
-        e.preventDefault();
         return false;
       }
 
@@ -111,6 +112,7 @@
 
       // Handle error
       const handleError = (errorMsg) => {
+        console.error('Form submission error:', errorMsg);
         if (statusEl) statusEl.textContent = errorMsg || "Erro ao enviar. Tenta novamente.";
         if (btn) {
           btn.disabled = false;
@@ -119,15 +121,35 @@
         isSubmitting = false;
       };
 
-      // Try to detect iframe load - use multiple methods
+      // Get form endpoint
+      const endpoint = form.getAttribute("action");
+      if (!endpoint) {
+        handleError("URL do formulário não configurada.");
+        return;
+      }
+
+      // Ensure all hidden fields are up to date before submission
+      addHiddenField("utm_source", utmSourceValue);
+      addHiddenField("utm_medium", utmMediumValue);
+      addHiddenField("utm_campaign", utmCampaignValue);
+      addHiddenField("user_agent", navigator.userAgent);
+
+      // Log form data for debugging (without sensitive info)
+      const formDataObj = {};
+      const formData = new FormData(form);
+      for (const [key, value] of formData.entries()) {
+        formDataObj[key] = key === 'email' || key === 'phone' ? '[REDACTED]' : value;
+      }
+      console.log('Form data to submit:', formDataObj);
+
+      // Use iframe method (most reliable for Google Apps Script)
+      // Set up iframe handlers
       let loadHandler = null;
       let timeoutHandler = null;
-      let errorHandler = null;
       let successCalled = false;
 
       const cleanup = () => {
         if (loadHandler && iframe) iframe.removeEventListener('load', loadHandler);
-        if (errorHandler && iframe) iframe.removeEventListener('error', errorHandler);
         if (timeoutHandler) clearTimeout(timeoutHandler);
       };
 
@@ -139,51 +161,39 @@
       };
 
       loadHandler = function() {
-        try {
-          // Check if iframe loaded successfully
-          if (iframe && iframe.contentWindow) {
-            try {
-              const iframeUrl = iframe.contentWindow.location.href;
-              if (iframeUrl && (iframeUrl.includes('script.google.com') || iframeUrl.includes('accounts.google.com'))) {
-                // Success - Apps Script responded
-                callSuccessOnce();
-                return;
-              }
-            } catch (e) {
-              // Cross-origin - this is expected, assume success
-              callSuccessOnce();
-              return;
-            }
-          }
-          // Iframe loaded but couldn't check URL - assume success
-          callSuccessOnce();
-        } catch (e) {
-          // Any error - assume success (form was submitted)
-          callSuccessOnce();
-        }
-      };
-
-      errorHandler = function() {
-        // Even on error, assume success after delay (form was submitted)
+        console.log('Iframe loaded - form submitted successfully');
+        // Small delay to ensure data is processed
         setTimeout(() => {
           callSuccessOnce();
-        }, 1000);
+        }, 300);
       };
 
-      // Set up listeners
+      // Set up listeners BEFORE submitting
       if (iframe) {
+        // Remove any existing listeners first
+        iframe.removeEventListener('load', loadHandler);
         iframe.addEventListener('load', loadHandler);
-        iframe.addEventListener('error', errorHandler);
       }
       
-      // Primary fallback timeout - assume success after 2 seconds
+      // Fallback timeout - if iframe doesn't load in 5 seconds, assume success anyway
+      // (form was submitted, even if we can't detect it)
       timeoutHandler = setTimeout(() => {
+        console.log('Iframe timeout - assuming form was submitted');
         callSuccessOnce();
-      }, 2000);
+      }, 5000);
 
-      // Let form submit naturally to iframe
-      // Don't prevent default - form should submit normally
-      return true;
+      // Ensure form target is set
+      form.target = "hidden_iframe";
+      
+      // Submit form to iframe (this is the most reliable method for Google Apps Script)
+      console.log('Submitting form to iframe:', endpoint);
+      try {
+        form.submit();
+      } catch (submitError) {
+        console.error('Form submit error:', submitError);
+        cleanup();
+        handleError("Erro ao enviar. Por favor, tenta novamente.");
+      }
     });
   });
 })();
