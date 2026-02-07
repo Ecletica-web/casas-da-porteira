@@ -206,7 +206,27 @@
       };
 
       loadHandler = function() {
-        console.log('Iframe loaded - form submitted successfully');
+        console.log('Iframe loaded - checking response...');
+        try {
+          // Try to check iframe content (may fail due to CORS, which is expected)
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          const iframeBody = iframeDoc.body;
+          if (iframeBody && iframeBody.innerText) {
+            const responseText = iframeBody.innerText;
+            console.log('Iframe response:', responseText);
+            // Check if response contains error
+            if (responseText.includes('error') || responseText.includes('401') || responseText.includes('Unauthorized')) {
+              console.error('Apps Script returned error:', responseText);
+              cleanup();
+              handleError("Erro de autorização. Verifica a configuração do Google Apps Script.");
+              return;
+            }
+          }
+        } catch (e) {
+          // CORS error is expected - can't read iframe content from different origin
+          console.log('Cannot read iframe content (CORS - expected):', e.message);
+        }
+        
         // Small delay to ensure data is processed by Google Apps Script
         setTimeout(() => {
           callSuccessOnce();
