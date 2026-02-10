@@ -34,22 +34,12 @@
         const json = await res.json();
 
         if (json.ok) {
-          if (statusEl) statusEl.textContent = "Enviado ✅ Vamos responder em 24h.";
-          if (btn) {
-            btn.disabled = false;
-            btn.textContent = "Enviar pedido";
-          }
-          
-          // Update URL without page reload for Google Ads conversion tracking
-          const url = new URL(window.location.href);
-          url.searchParams.set('form', 'success');
-          window.history.pushState({}, '', url.toString());
-          
-          form.reset();
-
-          // keep hidden source value after reset
-          const source = form.querySelector('input[name="source"]');
-          if (source) source.value = source.defaultValue || source.value || "";
+          // Redirect to success page for conversion tracking (GA4, Clarity, Ads)
+          var successUrl = "obrigado.html";
+          var qs = window.location.search;
+          if (qs) successUrl += (qs.startsWith("?") ? qs : "?" + qs);
+          window.location.href = successUrl;
+          return;
         } else {
           console.error(json);
           if (statusEl) statusEl.textContent = "Falha ao enviar. Tenta novamente.";
