@@ -1,3 +1,8 @@
+/* ==========================================================================
+   Novos Fogos — Main stylesheet
+   ========================================================================== */
+
+/* --- Variables --- */
 :root{
   --bg:#fafafa;
   --card:#ffffff;
@@ -12,6 +17,7 @@
   --max: 1200px;
 }
 
+/* --- Reset & base --- */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
@@ -25,14 +31,12 @@ body{
   min-height: 100vh;
 }
 
+/* Full-page background: image + overlays (body::before = image, body::after = light, html::before = brand tint) */
 body::before{
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('background.png');
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('../images/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -41,37 +45,31 @@ body::before{
   z-index: -2;
   pointer-events: none;
 }
-
 body::after{
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(250,250,250,.7);
   z-index: -1;
   pointer-events: none;
 }
-
 html::before{
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(59,130,246,.25);
   z-index: -1;
   pointer-events: none;
 }
 
+/* --- Layout --- */
 a{color:inherit;text-decoration:none}
 .container{max-width:var(--max); margin:0 auto; padding:0 24px}
 @media (max-width: 768px){
   .container{padding:0 16px}
 }
 
+/* --- Header & nav --- */
 .site-header{
   position:sticky; top:0; z-index:50;
   background: #ffffff;
@@ -108,6 +106,7 @@ a{color:inherit;text-decoration:none}
 .btn:active{transform: translateY(0);}
 .btn-small{padding:10px 20px; font-size:14px}
 
+/* --- Main content --- */
 main{padding:60px 0 40px}
 .section{padding: 32px 0}
 .section + .section{margin-top: 24px}
@@ -354,7 +353,6 @@ main{padding:60px 0 40px}
 .grid-3 .card{
   background: rgba(255,255,255,.95);
 }
-.card:hover{box-shadow: var(--shadow-lg); transform: translateY(-2px);}
 .card-pad{padding:32px}
 @media (max-width: 768px){
   .card{padding: 16px}
@@ -478,6 +476,7 @@ input:focus, textarea:focus, select:focus{
 .review-meta{ margin:4px 0 0; font-size: 13px; color: var(--muted); }
 .review-text{ margin: 0; line-height: 1.6; color: var(--text); font-size:15px; }
 
+/* --- FAQ --- */
 .faq{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -867,7 +866,7 @@ form{display:grid; gap:16px}
   .card .image-text-grid{padding: 12px; gap: 16px}
 }
 
-/* Additional refinements */
+/* --- Misc / page-specific --- */
 .review{ padding: 28px; }
 #reviews .section-head{ text-align: left; margin-left: 0; margin-right: 0; }
 #reviews .section-head h2{ font-size: 32px; }

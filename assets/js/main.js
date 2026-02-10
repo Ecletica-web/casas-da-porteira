@@ -1,22 +1,23 @@
+/**
+ * Novos Fogos — Lead form handling & footer year.
+ * Forms with [data-lead-form] submit via fetch and redirect to obrigado.html on success.
+ */
 (function () {
-  // Footer year
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   const forms = document.querySelectorAll("form[data-lead-form]");
   if (!forms.length) return;
 
   forms.forEach((form) => {
     form.addEventListener("submit", async (e) => {
-      e.preventDefault(); // prevents navigating to /exec
+      e.preventDefault();
 
       const statusEl = form.querySelector("[data-form-status]");
       const btn = form.querySelector('button[type="submit"]');
-
-      const endpoint = form.getAttribute("action"); // keep using the form action
+      const endpoint = form.getAttribute("action");
       const fd = new FormData(form);
 
-      // add tracking fields (your sheet has these columns)
       const qs = new URLSearchParams(window.location.search);
       fd.set("utm_source", qs.get("utm_source") || "");
       fd.set("utm_medium", qs.get("utm_medium") || "");
@@ -34,10 +35,7 @@
         const json = await res.json();
 
         if (json.ok) {
-          // Redirect to success page for conversion tracking (GA4, Clarity, Ads)
-          var successUrl = "obrigado.html";
-          var qs = window.location.search;
-          if (qs) successUrl += (qs.startsWith("?") ? qs : "?" + qs);
+          const successUrl = "obrigado.html" + (window.location.search ? window.location.search : "");
           window.location.href = successUrl;
           return;
         } else {
