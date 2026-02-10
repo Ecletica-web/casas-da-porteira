@@ -10,6 +10,7 @@
   if (!forms.length) return;
 
   forms.forEach((form) => {
+    form.setAttribute("action", "#"); // prevent native submit ever navigating to script URL
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
