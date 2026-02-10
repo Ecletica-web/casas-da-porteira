@@ -15,7 +15,7 @@
 
       const statusEl = form.querySelector("[data-form-status]");
       const btn = form.querySelector('button[type="submit"]');
-      const endpoint = form.getAttribute("action");
+      const endpoint = form.getAttribute("data-action") || form.getAttribute("action");
       const fd = new FormData(form);
 
       const qs = new URLSearchParams(window.location.search);
