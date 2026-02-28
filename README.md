@@ -9,7 +9,7 @@ Site estático para legalização de casas da porteira em Lisboa e Porto.
 ├── inicio.html         # Página inicial
 ├── contacto.html       # Formulário de avaliação
 ├── sobre.html          # Sobre a equipa
-├── servicos.html       # Serviços (legalização, venda, híbrido)
+├── servicos.html       # Serviços (legalização, venda, opções flexíveis)
 ├── artigos.html        # Listagem de artigos
 ├── obrigado.html       # Página de sucesso (conversões)
 ├── privacidade.html    # Política de privacidade
