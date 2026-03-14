@@ -1,0 +1,248 @@
+/* Instagram carousel slides — 1080×1350 px (4:5, formato recomendado para feed) */
+:root {
+  --brand: #3b82f6;
+  --brand-dark: #1e3a8a;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --bg: #fafafa;
+  --card: #ffffff;
+  --blue-light: #eff6ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #e5e7eb;
+}
+
+.slide {
+  width: 1080px;
+  height: 1350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 72px 80px;
+  position: relative;
+}
+
+.slide--cover { background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%); color: var(--brand-dark); }
+.slide--light { background: #ffffff; color: var(--text); }
+.slide--brand { background: var(--brand); color: #fff; }
+.slide--dark { background: var(--brand-dark); color: #fff; }
+
+.slide-title {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+
+.slide-body {
+  font-size: 44px;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 880px;
+}
+
+.slide--light .slide-body,
+.slide--cover .slide-body { color: var(--muted); }
+.slide--brand .slide-body,
+.slide--dark .slide-body { color: rgba(255,255,255,0.95); }
+
+/* Listas em slides: alinhadas à esquerda (não centradas) */
+.slide-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  text-align: left;
+  max-width: 880px;
+  width: 100%;
+  font-size: 42px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.slide-list li { margin-bottom: 14px; }
+.slide--light .slide-list,
+.slide--cover .slide-list { color: #374151; }
+.slide--brand .slide-list,
+.slide--dark .slide-list { color: rgba(255,255,255,0.95); }
+
+.slide-img-wrap {
+  margin-bottom: 28px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,.1);
+  max-width: 820px;
+}
+
+.slide-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.slide-cta {
+  font-size: 48px;
+  font-weight: 700;
+  margin-top: 32px;
+}
+
+.slide-logo {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.slide-logo-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+}
+
+.slide--brand .slide-logo,
+.slide--dark .slide-logo { color: #fff; }
+
+.slide--brand .slide-logo-img,
+.slide--dark .slide-logo-img { filter: brightness(0) invert(1); }
+
+/* Logo apenas em slides com fundo branco (.slide--light) */
+.slide--cover .slide-logo,
+.slide--brand .slide-logo,
+.slide--dark .slide-logo { display: none; }
+
+.slide-num {
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--brand);
+  margin-bottom: 24px;
+}
+
+.slide-sub {
+  font-size: 36px;
+  margin-top: 16px;
+  opacity: 0.9;
+}
+
+/* Carrossel 1: fontes ainda maiores + logo só em slides com fundo branco */
+.carousel-1 .slide-title { font-size: 80px; }
+.carousel-1 .slide-body { font-size: 48px; line-height: 1.5; }
+.carousel-1 .slide--cover .slide-logo,
+.carousel-1 .slide--brand .slide-logo { display: none; }
+
+/* Carrossel CTA (post-9): mais impactante */
+.carousel-cta .slide--brand .slide-title { font-size: 80px; }
+.carousel-cta .slide--brand .slide-body { font-size: 48px; font-weight: 600; }
+
+/* Single posts — 1080×1350 px (formato vertical Instagram) */
+.post {
+  width: 1080px;
+  height: 1350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 56px 56px 52px;
+  position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.post--light { background: #ffffff; color: #1a1a1a; }
+.post--cover { background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%); color: #1e3a8a; }
+
+.post-with-img { padding: 44px 48px 44px; justify-content: flex-start; }
+.post-with-img .post-title { margin-bottom: 24px; }
+.post-with-img .post-body { font-size: 42px; line-height: 1.5; }
+.post-with-img .post-body p { margin-bottom: 20px; }
+.post-with-img .post-list { font-size: 40px; margin: 24px 0 20px; line-height: 1.55; }
+.post-with-img .post-note { font-size: 34px; margin-top: 28px; }
+
+.post-img-wrap {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-img {
+  width: 100%;
+  max-width: 920px;
+  height: 520px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.06);
+  display: block;
+}
+
+.post-title {
+  font-size: 58px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  max-width: 920px;
+  margin-bottom: 32px;
+}
+
+.post-body {
+  font-size: 42px;
+  line-height: 1.5;
+  color: #374151;
+  max-width: 920px;
+}
+
+.post-body p { margin: 0 0 28px; }
+.post-body p:last-child { margin-bottom: 0; }
+
+.post-list {
+  list-style: none;
+  margin: 28px 0 24px;
+  padding: 0;
+  font-size: 40px;
+  line-height: 1.55;
+  color: #374151;
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  max-width: 920px;
+}
+
+.post-list li { margin-bottom: 18px; }
+
+.post-note {
+  font-size: 34px;
+  margin-top: 28px;
+  font-style: italic;
+  color: #6b7280;
+}
+
+.post-logo {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 46px;
+  font-weight: 700;
+  color: #1e3a8a;
+  letter-spacing: -0.02em;
+}

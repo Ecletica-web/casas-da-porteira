@@ -1,0 +1,13 @@
+{
+  "name": "novos-fogos-instagram-export",
+  "version": "1.0.0",
+  "description": "Export carousel slides to 1080x1080 PNG for Instagram",
+  "private": true,
+  "scripts": {
+    "export": "node export-slides.js",
+    "export:all": "node export-slides.js --all"
+  },
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}
