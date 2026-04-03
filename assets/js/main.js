@@ -3,6 +3,50 @@
  * Forms with [data-lead-form] submit via fetch and redirect to obrigado.html on success.
  */
 (function () {
+  var ADS_CALL_SEND_TO = "AW-17940614222/5ZvRCMy4_5QcEM6Y4OpC";
+
+  window.gtag_report_conversion = function gtag_report_conversion(url) {
+    var done = false;
+    function go() {
+      if (done) return;
+      done = true;
+      if (typeof url !== "undefined" && url) {
+        window.location.href = url;
+      }
+    }
+    var fallback = window.setTimeout(go, 2000);
+    function onSent() {
+      window.clearTimeout(fallback);
+      go();
+    }
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: ADS_CALL_SEND_TO,
+        value: 1.0,
+        currency: "EUR",
+        event_callback: onSent,
+      });
+    } else {
+      window.clearTimeout(fallback);
+      go();
+    }
+    return false;
+  };
+
+  document.addEventListener("click", function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var a = t.closest("a[href]");
+    if (!a) return;
+    var href = (a.getAttribute("href") || "").trim();
+    if (!/^tel:/i.test(href)) return;
+    e.preventDefault();
+    window.gtag_report_conversion(href);
+  });
+
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
