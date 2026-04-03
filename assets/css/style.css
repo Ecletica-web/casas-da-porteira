@@ -667,6 +667,15 @@ main{padding:60px 0 40px}
   margin-bottom: 16px;
 }
 
+.article-tags{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  margin: 0 0 12px;
+}
+.article-tags .tag{
+  display:inline-block; padding:5px 11px; border-radius:16px;
+  background: rgba(0,0,0,.06); color: var(--muted); font-size:12px; font-weight:500;
+}
+
 .h2{font-family: 'Archivo', sans-serif; font-size:1.85rem; margin:0 0 18px; font-weight:700; letter-spacing:-.035em; line-height:1.25; color: var(--text)}
 .h3{font-family: 'Archivo', sans-serif; font-size:1.2rem; margin:0 0 10px; font-weight:600; line-height:1.35; color: var(--text)}
 h1, h2, h3, h4{font-family: 'Archivo', sans-serif; font-weight: 700;}
