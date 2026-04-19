@@ -386,14 +386,14 @@ main{padding:60px 0 40px}
 }
 
 .hero{
-  display:grid; grid-template-columns: 1.2fr 1fr; gap:48px;
-  align-items: center;
+  display:grid; grid-template-columns: 1.2fr 1fr; gap:28px;
+  align-items: start;
   margin-bottom: 0;
   background: rgb(239, 246, 255);
   border: 1px solid rgba(0,0,0,.06);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 48px;
+  padding: 28px 32px;
   max-width: var(--max);
   width: 100%;
   margin-left: auto;
@@ -402,8 +402,8 @@ main{padding:60px 0 40px}
 @media (max-width: 768px){
   .hero{
     grid-template-columns: 1fr;
-    padding: 32px 24px;
-    gap: 24px;
+    padding: 24px 20px;
+    gap: 20px;
   }
 }
 
@@ -424,13 +424,18 @@ main{padding:60px 0 40px}
 
 .form-subtitle{
   font-size: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+}
+.form-trust-note{
+  font-size: 0.95rem;
+  margin: 0 0 12px;
+  line-height: 1.5;
 }
 
 .form-compact-fields{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px 16px;
+  gap: 8px 14px;
   align-items: start;
 }
 
@@ -441,8 +446,8 @@ main{padding:60px 0 40px}
 }
 
 .form-compact-fields .form-field-group label{
-  margin-bottom: 6px;
-  min-height: 2.75em;
+  margin-bottom: 4px;
+  min-height: auto;
   line-height: 1.35;
   display: block;
 }
@@ -530,18 +535,28 @@ main{padding:60px 0 40px}
   }
 }
 @media (max-width: 900px){ 
-  .hero{grid-template-columns:1fr !important; gap:32px} 
+  .hero{grid-template-columns:1fr !important; gap:24px} 
+}
+
+.hero .h1{
+  margin-bottom: 14px;
 }
 
 .h1{font-family: 'Archivo', sans-serif; font-size: clamp(2.5rem, 5vw, 3.75rem); line-height:1.08; margin:0 0 24px; letter-spacing:-.045em; font-weight:800; color: var(--text)}
 .lead{font-family: 'Figtree', sans-serif; font-size:1.25rem; color:var(--muted); margin:0 0 32px; line-height:1.65; font-weight:400}
 .lead ul{list-style:none; padding-left:0; margin:0 0 32px}
 .lead ul li{margin:0 0 12px; line-height:1.65}
+.hero > div:last-child > .lead{
+  margin-bottom: 18px;
+}
+.hero > div:last-child > .lead ul{
+  margin-bottom: 18px;
+}
 .hero > div:last-child > .lead:last-of-type{
-  margin-bottom: 36px;
+  margin-bottom: 22px;
 }
 .hero > div:last-child .cta-row{
-  margin-top: 4px;
+  margin-top: 0;
 }
 @media (max-width: 768px){
   .h1{font-size:2.15rem; margin:0 0 18px}
@@ -687,6 +702,9 @@ main{padding:60px 0 40px}
   font-size:13px;
   font-weight:500;
   margin-bottom: 16px;
+}
+.hero .badge{
+  margin-bottom: 10px;
 }
 
 .article-tags{
@@ -1022,12 +1040,12 @@ input:focus, textarea:focus, select:focus{
 .hero > div:first-child{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 0;
 }
 .hero-media{
   width: 100%;
-  max-height: min(68vh, 620px);
+  max-height: min(72vh, 640px);
   aspect-ratio: 3 / 4;
   border-radius: var(--radius);
   overflow: hidden;
@@ -1210,21 +1228,35 @@ form{display:grid; gap:16px}
   border: 1px solid rgba(0,0,0,.06);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 48px;
+  padding: 24px 28px;
   max-width: var(--max);
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
+  align-items: stretch;
+  gap: 24px;
 }
 
 .form-section-unified .form-compact{
   background: rgba(255,255,255,.95);
   border: 1px solid rgba(0,0,0,.06);
   box-shadow: var(--shadow);
-  padding: 32px !important;
-  max-width: 600px;
+  padding: 22px 24px !important;
+  max-width: none;
+  width: 100%;
   margin: 0;
+}
+
+/* Imagem ao lado do formulário: mesma altura da coluna do formulário (sem faixa vazia) */
+.form-section-unified > .content-image-vertical{
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: cover;
 }
 
 .card.form-compact{
@@ -1243,14 +1275,14 @@ form{display:grid; gap:16px}
 }
 @media (max-width: 768px){
   .image-text-grid{padding: 16px; gap: 20px}
-  .form-section-unified{padding: 16px}
+  .form-section-unified{padding: 16px 14px; gap: 18px}
   .card .image-text-grid{padding: 12px; gap: 16px}
 }
 
 @media (max-width: 480px){
   /* Make form/card reach closer to edges on mobile */
   .image-text-grid{padding: 10px; gap: 16px}
-  .form-section-unified{padding: 10px}
+  .form-section-unified{padding: 12px 10px}
   .card .image-text-grid{padding: 10px; gap: 14px}
   .form-section-unified .form-compact,
   .card.form-compact,
@@ -1259,6 +1291,42 @@ form{display:grid; gap:16px}
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+/* "A realidade": texto a fluir à volta da imagem — remove "buraco" sob a foto */
+.image-text-grid.image-text-grid--floated{
+  display: flow-root;
+  gap: 0;
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding: 22px 26px !important;
+}
+.card.section-bg.text-large .image-text-grid.image-text-grid--floated{
+  margin-top: 8px;
+}
+.card.card-pad.section-bg.text-large > .h2:first-child{
+  margin-bottom: 10px;
+}
+.image-text-grid.image-text-grid--floated > img.content-image-small{
+  float: left;
+  width: clamp(200px, 34vw, 340px);
+  max-width: 40%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  margin: 4px 1.15rem 10px 0;
+  object-fit: cover;
+}
+.image-text-grid.image-text-grid--floated > div > p.muted:first-of-type{
+  margin-top: 0;
+}
+@media (max-width: 900px){
+  .image-text-grid.image-text-grid--floated > img.content-image-small{
+    float: none;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 0 16px 0;
   }
 }
 
