@@ -386,8 +386,8 @@ main{padding:60px 0 40px}
 }
 
 .hero{
-  display:grid; grid-template-columns: 1.2fr 1fr; gap:28px;
-  align-items: start;
+  display:grid; grid-template-columns: 1fr 1.1fr; gap:28px;
+  align-items: stretch;
   margin-bottom: 0;
   background: rgb(239, 246, 255);
   border: 1px solid rgba(0,0,0,.06);
@@ -1040,28 +1040,33 @@ input:focus, textarea:focus, select:focus{
 .hero > div:first-child{
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: stretch;
   min-height: 0;
 }
 .hero-media{
   width: 100%;
-  max-height: min(72vh, 640px);
-  aspect-ratio: 3 / 4;
+  flex: 1 1 auto;
+  min-height: 320px;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  flex-shrink: 0;
 }
 .hero-media img{
   display: block;
   width: 100%;
   height: 100%;
+  min-height: 100%;
   object-fit: cover;
 }
-@media (max-width: 768px){
+@media (max-width: 900px){
+  .hero{
+    align-items: start;
+  }
   .hero-media{
+    flex: none;
     aspect-ratio: 4 / 3;
-    max-height: none;
+    min-height: 0;
+    max-height: 520px;
   }
 }
 
