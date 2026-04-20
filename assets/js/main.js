@@ -229,6 +229,25 @@
     header.appendChild(dropdown);
   }
 
+  function injectEmergencyCTA() {
+    if (document.querySelector('[data-emergency-cta="true"]')) return;
+    const footer = document.querySelector(".site-footer");
+    if (!footer) return;
+    // Skip on the "obrigado" (thank-you) page
+    if (/obrigado\.html$/i.test(window.location.pathname)) return;
+
+    const band = document.createElement("section");
+    band.className = "sc-emergency";
+    band.setAttribute("data-emergency-cta", "true");
+    band.innerHTML =
+      '<div class="sc-emergency-inner">' +
+      '<h3>Precisa de desbloquear a casa da porteira do seu prédio? Respondemos em 24h.</h3>' +
+      '<a class="btn" href="contacto.html">Pedir análise grátis</a>' +
+      '</div>';
+
+    footer.parentNode.insertBefore(band, footer);
+  }
+
   function injectWhatsAppFloatingButton() {
     if (document.querySelector('[data-wa-float="true"]')) return;
 
@@ -248,6 +267,7 @@
   injectFooterSocialLinks();
   injectMobileBurgerMenu();
   injectHeaderContactActions();
+  injectEmergencyCTA();
   injectWhatsAppFloatingButton();
 
   const forms = document.querySelectorAll("form[data-lead-form]");

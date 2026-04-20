@@ -71,56 +71,359 @@ src="https://www.facebook.com/tr?id=866243689800269&ev=PageView&noscript=1"
     </div>
   </header>
 
-  <main class="container">
-    <section class="section">
-      <div class="container">
-        <div class="hero">
-          <div>
-            <div class="hero-media">
-              <img src="assets/images/lisboa.png" alt="Rua de prédios antigos em Portugal, fachadas com varandas, luz natural" />
-            </div>
+  <main>
+    <!-- ================= HERO (template style) ================= -->
+    <section class="sc-section" style="padding-top: 32px;">
+      <div class="sc-hero">
+        <div class="sc-hero-copy">
+          <span class="badge">Avaliação gratuita para condomínios</span>
+          <h1 class="h1">O seu prédio tem uma casa da porteira parada há anos?</h1>
+          <p class="lead">
+            É um ativo que não rende — e um assunto antigo que <strong>ninguém quer coordenar</strong>. Nós assumimos essa coordenação: articulamos condóminos, assembleia, administrador, câmara e registos, do primeiro contacto ao encerramento do processo.
+          </p>
+          <p class="lead">
+            Não vendemos "papel". Ajudamos a <strong>desbloquear o imóvel</strong> e a escolher o caminho certo — legalização, compra direta ou modelo flexível. Lisboa, Porto e Área Metropolitana. Resposta em 24h.
+          </p>
+
+          <div class="sc-hero-contact">
+            <a class="sc-contact-card" href="tel:+351910829923">
+              <span class="sc-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <span>
+                <span class="sc-contact-label">Ligue-nos</span>
+                <span class="sc-contact-value">+351 910 829 923</span>
+              </span>
+            </a>
+            <a class="sc-contact-card" href="https://wa.me/351910829923" target="_blank" rel="noopener">
+              <span class="sc-contact-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              </span>
+              <span>
+                <span class="sc-contact-label">WhatsApp</span>
+                <span class="sc-contact-value">+351 910 829 923</span>
+              </span>
+            </a>
           </div>
-          <div>
-            <span class="badge">Avaliação gratuita para condomínios</span>
-            <h1 class="h1">O seu prédio tem uma casa da porteira parada há anos, vazia ou sem uso?</h1>
-            <p class="lead">
-              É um ativo que não rende — e um assunto antigo que ninguém quer coordenar.
+
+          <div class="sc-hero-ctas">
+            <a class="btn" href="#lead-form">Pedir análise gratuita</a>
+            <a class="btn" href="servicos.html" style="background: transparent; color: var(--brand) !important; border: 2px solid var(--brand);">Ver serviços</a>
+          </div>
+        </div>
+
+        <div class="sc-hero-image">
+          <img src="assets/images/lisboa.png" alt="Prédios antigos em Lisboa — onde estão a maioria das casas da porteira" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATS ROW ================= -->
+    <section class="sc-section" style="padding-top: 0; padding-bottom: 48px;">
+      <div class="container">
+        <div class="sc-stats">
+          <div class="sc-stat">
+            <p class="sc-stat-num">15</p>
+            <p class="sc-stat-label">Legalizações concluídas</p>
+          </div>
+          <div class="sc-stat">
+            <p class="sc-stat-num">5</p>
+            <p class="sc-stat-label">Casas da porteira reabilitadas</p>
+          </div>
+          <div class="sc-stat">
+            <p class="sc-stat-num">100%</p>
+            <p class="sc-stat-label">Condomínios satisfeitos com o processo</p>
+          </div>
+          <div class="sc-stat">
+            <p class="sc-stat-num">24h</p>
+            <p class="sc-stat-label">Resposta à 1ª avaliação</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WHO WE ARE (MOSAIC) ================= -->
+    <section class="sc-section">
+      <div class="container">
+        <div class="sc-who">
+          <div class="sc-who-image">
+            <img src="assets/images/casa reabilitada.png" alt="Casa da porteira reabilitada após legalização" />
+          </div>
+          <div class="sc-who-copy">
+            <span class="badge">Quem somos</span>
+            <h2 class="h2">Articulamos o condomínio do início ao fim</h2>
+            <p class="muted" style="font-size: 1.05rem; line-height: 1.65;">
+              A casa da porteira não está parada por falta de vontade. Está parada porque <b>ninguém reúne toda a gente na mesma mesa</b>: condóminos, administrador, arquiteto, advogado, câmara, finanças e registos. Nós somos esse interlocutor único.
             </p>
-            <ul class="lead">
-              <li>Processo burocrático, complexo e caro</li>
-              <li>Falta de dinheiro no condomínio</li>
-              <li>Ninguém assume a responsabilidade de liderar o processo</li>
-              <li>Anos de reuniões sem decisão</li>
+            <p class="muted" style="font-size: 1.05rem; line-height: 1.65;">
+              Preparamos a assembleia, redigimos a minuta, recolhemos procurações, cumprimos prazos, respondemos a dúvidas dos condóminos e levamos o processo a passar — seja legalização, compra direta ou modelo flexível. O condomínio não tem de se tornar especialista em burocracia.
+            </p>
+            <a class="btn" href="sobre.html" style="margin-top: 10px;">Sobre nós</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES (4 cards) ================= -->
+    <section class="sc-section">
+      <div class="sc-section-title">
+        <span class="eyebrow">Como trabalhamos</span>
+        <h2>Quatro princípios que fazem a diferença</h2>
+        <p>Cada caso é diferente — a metodologia é a mesma.</p>
+      </div>
+      <div class="container">
+        <div class="sc-features">
+          <div class="sc-feature">
+            <span class="sc-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <h3>Diagnóstico honesto</h3>
+            <p>Começamos por dizer se o caso faz ou não sentido — mesmo que isso signifique não avançar.</p>
+          </div>
+          <div class="sc-feature">
+            <span class="sc-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <h3>Coordenação total</h3>
+            <p>Arquiteto, advogado, solicitador e câmara — alinhados num só interlocutor para o condomínio.</p>
+          </div>
+          <div class="sc-feature">
+            <span class="sc-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </span>
+            <h3>Execução real</h3>
+            <p>Menos reuniões vagas, mais passos concretos. O processo <b>avança</b>, não adormece.</p>
+          </div>
+          <div class="sc-feature">
+            <span class="sc-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </span>
+            <h3>Proteção do condomínio</h3>
+            <p>Risco legal, burocrático e financeiro reduzido com decisões bem documentadas e transparentes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES LIST (hover reveals image) ================= -->
+    <section class="sc-section">
+      <div class="sc-section-title">
+        <span class="eyebrow">O que fazemos</span>
+        <h2>Serviços pensados para o ciclo completo</h2>
+        <p>Desde o primeiro diagnóstico até à venda ou rentabilização do imóvel — sem passos "órfãos".</p>
+      </div>
+      <div class="container">
+        <div class="sc-services">
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Diagnóstico de viabilidade</h3>
+              <p>Análise legal e urbanística do caso em 24h. Identificamos bloqueios reais, não suposições.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/lisboa.png" alt="Diagnóstico" /></div>
+            <a class="sc-service-arrow" href="servicos.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Legalização e licenciamento</h3>
+              <p>Projeto de arquitetura, licença de utilização, título constitutivo, registos — processo completo, preço fixo.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/contrato.png" alt="Legalização" /></div>
+            <a class="sc-service-arrow" href="artigos/guia-legalizar-casa-porteira.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Compra direta ao condomínio</h3>
+              <p>Proposta firme de compra no estado atual — assumimos o risco burocrático e jurídico para o condomínio fechar o tema.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/compra.png" alt="Compra direta" /></div>
+            <a class="sc-service-arrow" href="servicos.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Modelos flexíveis</h3>
+              <p>Sem investimento inicial, compra posterior ou honorários alinhados — caso a caso, adaptado ao que a assembleia aprovar.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/papelada.png" alt="Modelos flexíveis" /></div>
+            <a class="sc-service-arrow" href="servicos.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-services-cta">
+            <p class="h3">Ver todos os serviços e modelos</p>
+            <a class="btn" href="servicos.html">Explorar serviços</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PLANS / MODELS (pricing style) ================= -->
+    <section class="sc-section">
+      <div class="sc-section-title">
+        <span class="eyebrow">Três caminhos</span>
+        <h2>O modelo certo escolhe-se depois do diagnóstico</h2>
+        <p>Cada condomínio tem realidade financeira e política diferente. Não empurramos todos para o mesmo procedimento.</p>
+      </div>
+      <div class="container">
+        <div class="sc-plans">
+          <div class="sc-plan">
+            <span class="sc-plan-tag">Mantém o ativo</span>
+            <h3 class="sc-plan-title">Valorizar e legalizar</h3>
+            <p class="sc-plan-subtitle">Para condomínios que querem manter a fração, legalizá-la e depois vender, arrendar ou aplicar o valor em obras.</p>
+            <p class="sc-plan-price">Preço fixo<small>acordado à partida</small></p>
+            <div class="sc-plan-divider"></div>
+            <ul class="sc-plan-features">
+              <li>Projeto de arquitetura adequado ao existente</li>
+              <li>Licenciamento e licença de utilização</li>
+              <li>Título constitutivo e registos</li>
+              <li>Apoio ao condomínio e administrador</li>
+              <li>Esclarecimentos em assembleia</li>
             </ul>
-            <p class="lead">
-              Não vendemos “papel”. Ajudamos a <strong>desbloquear o imóvel</strong> e a escolher o caminho certo: <strong>valorizar para vender ou arrendar</strong>, <strong>liquidez rápida</strong> ou <strong>modelo flexível</strong> quando o condomínio precisa de outra forma de pagar.
-            </p>
-            <p class="lead">
-              Atendemos prédios em <strong>Lisboa</strong>, no <strong>concelho do Porto</strong> e noutros concelhos da <strong>Área Metropolitana do Porto</strong> (Gaia, Matosinhos, Maia, etc.).
-            </p>
-            <p class="lead">
-              O primeiro passo é sempre o mesmo: <strong>diagnóstico</strong> claro — só depois é que faz sentido falar em legalização, compra ou outro modelo.
-            </p>
-            <div class="cta-row">
-              <a class="btn" href="contacto.html#lead-form">👉 Diga o que está bloqueado — resposta em 24h</a>
-              <a class="btn-whatsapp-mini" href="https://wa.me/351910829923" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-                <img src="assets/images/transferir.png" alt="" class="app-icon" />
-              </a>
+            <a class="btn" href="contacto.html">Pedir análise</a>
+          </div>
+
+          <div class="sc-plan sc-plan--featured">
+            <span class="sc-plan-tag">Mais comum</span>
+            <h3 class="sc-plan-title">Compra direta</h3>
+            <p class="sc-plan-subtitle">Liquidez rápida, sem gerir o processo. Fechamos o assunto com dinheiro na mesa e assumimos todo o risco.</p>
+            <p class="sc-plan-price">Proposta firme<small>sob diagnóstico</small></p>
+            <div class="sc-plan-divider"></div>
+            <ul class="sc-plan-features">
+              <li>Avaliação da situação legal e de mercado</li>
+              <li>Proposta formal em poucos dias</li>
+              <li>Compra no estado atual — sem obras prévias</li>
+              <li>Assumimos risco burocrático e jurídico</li>
+              <li>Condomínio fecha o tema e distribui o valor</li>
+            </ul>
+            <a class="btn" href="contacto.html">Pedir proposta</a>
+          </div>
+
+          <div class="sc-plan">
+            <span class="sc-plan-tag">À medida</span>
+            <h3 class="sc-plan-title">Modelo flexível</h3>
+            <p class="sc-plan-subtitle">Quando o condomínio não tem caixa ou vontade política para um fee completo logo de início.</p>
+            <p class="sc-plan-price">Caso a caso<small>combinado</small></p>
+            <div class="sc-plan-divider"></div>
+            <ul class="sc-plan-features">
+              <li>Sem investimento inicial acordado à partida</li>
+              <li>Honorários alinhados com o condomínio</li>
+              <li>Possibilidade de compra posterior</li>
+              <li>Desenhado para passar em assembleia</li>
+              <li>Transparência total sobre ganhos e riscos</li>
+            </ul>
+            <a class="btn" href="contacto.html">Falar connosco</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIAL ================= -->
+    <section class="sc-section">
+      <div class="container">
+        <div class="sc-testimonials">
+          <div class="sc-testimonial-side">
+            <span class="badge">Experiência condomínios</span>
+            <h2>O processo sai das mãos do administrador e volta com tudo regularizado.</h2>
+            <p>Trabalhamos diretamente com administradores de condomínio e assembleias. Explicamos o que é possível, o que não é, e avançamos com decisões bem documentadas.</p>
+            <a class="btn" href="contacto.html">Pedir avaliação gratuita</a>
+          </div>
+          <div class="sc-testimonial">
+            <p class="sc-testimonial-quote">“Ninguém queria liderar este tema. Quando a Novos Fogos entrou, o processo começou a andar em semanas, não em anos.”</p>
+            <p class="sc-testimonial-text">O diagnóstico foi claro à partida — incluindo sobre os riscos. A comunicação com a assembleia foi simples e os condóminos entenderam o que estava em jogo.</p>
+            <div class="sc-testimonial-author">
+              <span class="sc-testimonial-avatar">AM</span>
+              <div>
+                <p class="sc-testimonial-name">Administrador de condomínio</p>
+                <p class="sc-testimonial-role">Edifício em Lisboa · 12 frações</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ================= A REALIDADE (narrative) ================= -->
+    <section class="sc-section">
+      <div class="container">
+        <div class="card card-pad section-bg text-large" style="--bg-img: url('assets/images/background.png');">
+          <h2 class="h2">A realidade (sem maquilhagem)</h2>
+          <div class="image-text-grid">
+            <div>
+              <p class="muted">
+                Nos últimos anos o enquadramento urbanístico tem evoluído: em muitos casos há <b>vias mais ágeis</b> (por exemplo comunicação prévia em vez de licenciamento completo) — <b>quando o caso o permite</b>.
+              </p>
+              <p class="muted">
+                O problema deixou de ser só "o que a lei permite". Muitas vezes é <b>execução</b>: alinhar condomínio, documentação, câmara e registos sem o processo morrer a meio.
+              </p>
+              <p class="muted">Legalizar uma casa da porteira <b>continua a ser exigente</b>. Envolve, muitas vezes:</p>
+              <ul class="muted">
+                <li>processos urbanísticos antigos ou inexistentes</li>
+                <li>plantas não oficiais ou contraditórias</li>
+                <li>ausência de título autónomo</li>
+                <li>alterações ao título constitutivo</li>
+                <li>decisões em assembleia de condomínio</li>
+                <li>articulação entre Câmara, Conservatória e Finanças</li>
+              </ul>
+              <p class="muted">
+                Pode ler o nosso <a href="artigos/guia-legalizar-casa-porteira.html">guia completo</a>, ou os artigos sobre <a href="artigos/legalizar-casa-porteira-porto.html">Porto</a> e <a href="artigos/legalizar-casa-porteira-area-metropolitana-porto.html">Área Metropolitana do Porto</a>.
+              </p>
+            </div>
+            <img src="assets/images/azulejos.png" alt="Fachada de edifício português com azulejos e pedra" class="content-image-small" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= IMPACTO NO VALOR ================= -->
+    <section class="sc-section" style="padding-top: 0;">
+      <div class="container">
+        <div class="sc-dark-cta">
+          <div>
+            <h2>Obras no prédio valorizam a sua fração</h2>
+            <p>Quando a casa da porteira é legalizada e reabilitada, <b>todo o prédio ganha valor</b> — não só a fração nova. Fachada, infraestruturas, eficiência energética ou reabilitação global do edifício podem valorizar cada apartamento entre <b>+10% e +25%</b>.</p>
+            <a class="btn" href="contacto.html">Ver se faz sentido no seu caso</a>
+          </div>
+          <div class="sc-dark-cta-side">
+            <p class="sc-stat-num">+10%<br>a +25%</p>
+            <p class="sc-stat-label">Valorização típica da sua fração com reabilitação global do prédio</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= APPOINTMENT / FORM ================= -->
+    <section class="sc-section" id="lead-form">
+      <div class="sc-section-title">
+        <span class="eyebrow">Avaliação gratuita</span>
+        <h2>Descubra se o caso faz sentido</h2>
+        <p>Preencha o essencial. Primeira leitura em 24h, sem compromisso.</p>
+      </div>
       <div class="container">
         <div class="image-text-grid form-section-unified">
           <div class="form-compact">
-            <h2 class="h2 form-title">Descubra se o caso faz sentido</h2>
-            <p class="muted form-subtitle">Preencha o essencial. Recebe uma primeira leitura em 24h — sem compromisso.</p>
-            <p class="muted form-trust-note">Nem todos os casos são viáveis; o nosso trabalho começa por filtrar isso com honestidade.</p>
+            <p class="muted form-trust-note">Nem todos os casos são viáveis — o nosso trabalho começa por filtrar isso com honestidade.</p>
 
-            <!-- IMPORTANT: only ONE form, and it has data-lead-form -->
             <form data-lead-form
                   action="#"
                   data-action="https://script.google.com/macros/s/AKfycbxK5gQw27a5DsHszZlE7roREd4_NVP6aarMYyowtsIFsi1kRLndP4yVU6yhdA9cDjZm/exec"
@@ -142,7 +445,7 @@ src="https://www.facebook.com/tr?id=866243689800269&ev=PageView&noscript=1"
               </div>
 
               <div class="form-field-group">
-                <label for="location">Localização do imóvel (cidade ou concelho)</label>
+                <label for="location">Localização do imóvel</label>
                 <input type="text" id="location" name="location" required />
               </div>
 
@@ -152,7 +455,7 @@ src="https://www.facebook.com/tr?id=866243689800269&ev=PageView&noscript=1"
               </div>
 
               <div class="form-field-group">
-                <label for="num_condominios">Número de condóminos (opcional)</label>
+                <label for="num_condominios">Nº condóminos (opcional)</label>
                 <input type="number" id="num_condominios" name="num_condominios" min="0" />
               </div>
 
@@ -167,7 +470,7 @@ src="https://www.facebook.com/tr?id=866243689800269&ev=PageView&noscript=1"
               </div>
 
               <div class="form-field-group">
-                <label for="num_fracoes">Número de frações do prédio (opcional)</label>
+                <label for="num_fracoes">Nº frações do prédio (opcional)</label>
                 <input type="number" id="num_fracoes" name="num_fracoes" min="0" />
               </div>
 
@@ -183,200 +486,47 @@ src="https://www.facebook.com/tr?id=866243689800269&ev=PageView&noscript=1"
             </form>
             <iframe name="hidden_iframe" style="display:none;"></iframe>
           </div>
-          <img src="assets/images/casadaporteira5.png" alt="Interior de apartamento reabilitado, sala luminosa" class="content-image-vertical" />
+          <img src="assets/images/casadaporteira5.png" alt="Interior de apartamento reabilitado" class="content-image-vertical" />
         </div>
       </div>
     </section>
 
-    <!-- A realidade -->
-    <section class="section">
+    <!-- ================= BLOG PREVIEW ================= -->
+    <section class="sc-section">
+      <div class="sc-section-title">
+        <span class="eyebrow">Conteúdo útil</span>
+        <h2>Artigos recentes</h2>
+        <p>Guias, artigos e explicações sobre como desbloquear casas da porteira.</p>
+      </div>
       <div class="container">
-        <div class="card card-pad section-bg text-large" style="--bg-img: url('assets/images/background.png');">
-          <h2 class="h2">A realidade (sem maquilhagem)</h2>
-          <div class="image-text-grid">
-            <div>
-              <p class="muted">
-                Nos últimos anos o enquadramento urbanístico tem evoluído: em muitos casos há <b>vias mais ágeis</b> (por exemplo comunicação prévia em vez de licenciamento completo) — <b>quando o caso o permite</b>.
-              </p>
-              <p class="muted">
-                O problema deixou de ser só “o que a lei permite”. Muitas vezes é <b>execução</b>: alinhar condomínio, documentação, câmara e registos sem o processo morrer a meio.
-              </p>
-              <p class="muted">
-                Legalizar uma casa da porteira <b>continua a ser exigente</b>.
-              </p>
-              <p class="muted">
-                Envolve, muitas vezes:
-              </p>
-              <ul class="muted">
-                <li>processos urbanísticos antigos ou inexistentes</li>
-                <li>plantas não oficiais ou contraditórias</li>
-                <li>ausência de título autónomo</li>
-                <li>alterações ao título constitutivo</li>
-                <li>decisões em assembleia de condomínio</li>
-                <li>articulação entre Câmara, Conservatória e Finanças</li>
-                <li>risco jurídico se o processo for mal conduzido</li>
-              </ul>
-              <p class="muted">
-                Na prática, <b>ninguém coordena tudo isto de forma contínua</b> — e o tema <b>adormece durante anos</b>.
-              </p>
-              <p class="muted">
-                Pode ler o nosso <a href="artigos/guia-legalizar-casa-porteira.html">guia completo sobre como legalizar casa da porteira</a> (passos, bloqueios, custos e quando não é viável), o artigo <a href="artigos/legalizar-casa-porteira-porto.html">legalizar no Porto</a> ou <a href="artigos/legalizar-casa-porteira-area-metropolitana-porto.html">na Área Metropolitana do Porto</a>.
-              </p>
+        <div class="sc-blog">
+          <a class="sc-blog-card" href="artigos/guia-legalizar-casa-porteira.html">
+            <div class="sc-blog-img"><img src="assets/images/contrato.png" alt="Guia definitivo de legalização" /></div>
+            <div class="sc-blog-body">
+              <div class="sc-blog-meta"><span class="sc-blog-tag">Guia</span><span>Leitura essencial</span></div>
+              <h3 class="sc-blog-title">Como legalizar uma casa da porteira: guia definitivo</h3>
+              <p class="sc-blog-desc">Cenários, bloqueios, passos, custos e quando não é viável.</p>
             </div>
-            <img src="assets/images/azulejos.png" alt="Fachada de edifício português com azulejos e pedra" class="content-image-small" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- A diferença -->
-    <section class="section">
-      <div class="container">
-        <div class="card card-pad text-large">
-          <h2 class="h2">O maior bloqueio é operacional</h2>
-          <div class="image-text-grid">
-            <div>
-              <p class="muted">
-                Nós <b>já conhecemos este processo por dentro</b> — e sabemos onde as coisas costumam falhar: assembleias, procurações, prazos, decisões partilhadas.
-              </p>
-              <p class="muted">
-                Não somos intermediários nem generalistas. Somos uma equipa focada <b>exclusivamente</b> em desbloquear situações como esta, <b>do primeiro contacto ao encerramento do processo</b>.
-              </p>
-              <p class="muted">
-                O condomínio não precisa de “mais uma reunião sem dono”. Precisa de <b>execução</b>.
-              </p>
+          </a>
+          <a class="sc-blog-card" href="artigos/titulo-constitutivo-permilagem-casa-porteira.html">
+            <div class="sc-blog-img"><img src="assets/images/papelada.png" alt="Título constitutivo" /></div>
+            <div class="sc-blog-body">
+              <div class="sc-blog-meta"><span class="sc-blog-tag">Legal</span><span>Condomínios</span></div>
+              <h3 class="sc-blog-title">Título constitutivo e permilagem: o que muda ao regularizar</h3>
+              <p class="sc-blog-desc">Parte comum vs. fração autónoma e impacto nas quotas.</p>
             </div>
-            <img src="assets/images/contrato.png" alt="Documentos e contrato em mesa de escritório" class="content-image-small" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- O que ganham os condóminos -->
-    <section class="section">
-      <div class="container section-condominios-wrap">
-        <h2 class="h2 section-condominios-title">Valor que hoje está difícil de realizar</h2>
-        <div class="card card-pad text-large">
-          <div class="image-text-grid">
-            <div>
-              <p class="muted">
-                Uma fração parada ou mal documentada <b>não aparece no mercado como deveria</b>: compradores, bancos e notários trabalham com títulos e licenças — não com “sempre foi assim”.
-              </p>
-              <p class="muted">
-                Em muitos casos estamos a falar de <b>dezenas ou centenas de milhares de euros</b> de valor difícil de concretizar sem regularizar a situação.
-              </p>
-              <p class="muted">
-                Para além de poder aplicar o valor em obras, o condomínio pode reduzir quotas extraordinárias, vender e distribuir pelos condóminos, ou gerar rendimento em arrendamento — <b>mas isso exige a parte legal bem fechada</b>.
-              </p>
+          </a>
+          <a class="sc-blog-card" href="artigos/legalizar-casa-porteira-lisboa.html">
+            <div class="sc-blog-img"><img src="assets/images/lisboa.png" alt="Legalizar em Lisboa" /></div>
+            <div class="sc-blog-body">
+              <div class="sc-blog-meta"><span class="sc-blog-tag">Lisboa</span><span>Procedimentos</span></div>
+              <h3 class="sc-blog-title">Legalizar casa da porteira em Lisboa: Urbanismo Digital</h3>
+              <p class="sc-blog-desc">Câmara Municipal de Lisboa e propriedade horizontal.</p>
             </div>
-            <img src="assets/images/casa reabilitada.png" alt="Interior reabilitado, espaço luminoso" class="content-image-small" />
-          </div>
+          </a>
         </div>
-        <div class="card card-pad card-flashy impacto-valor-fracoes">
-          <p class="muted"><b>Investir no edifício valoriza diretamente cada apartamento.</b></p>
-          <p class="muted text-small">Impacto típico no valor das frações</p>
-          <ul class="muted text-small list-impacto">
-            <li>Fachada renovada → +3% a +7%</li>
-            <li>Infraestruturas atualizadas → +4% a +10%</li>
-            <li>Eficiência energética melhorada → +5% a +12%</li>
-            <li>Elevador instalado → +8% a +20%</li>
-            <li>Reabilitação global do prédio → +10% a +25%</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Como ajudamos -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Coordenação e execução de ponta a ponta</h2>
-        </div>
-        <div class="card card-pad text-large">
-          <div class="image-text-grid">
-            <div>
-              <p class="muted">
-                Assumimos responsabilidade pelo processo — junto do condomínio, administrador e assembleia — para que ninguém fique sozinho a navegar burocracia:
-              </p>
-              <ul class="muted">
-                <li>análise jurídica e urbanística</li>
-                <li>projeto de arquitetura</li>
-                <li>licenciamento e legalização</li>
-                <li>alterações legais e registais</li>
-                <li>apoio ao condomínio e administrador</li>
-                <li>esclarecimentos em assembleia</li>
-              </ul>
-              <p class="muted">
-                O condomínio <b>não tem de navegar a burocracia</b>.
-              </p>
-            </div>
-            <img src="assets/images/papelada.png" alt="Documentos organizados em mesa de escritório" class="content-image-small" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Modelos possíveis -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Três caminhos — escolhidos após diagnóstico</h2>
-        </div>
-      <div class="grid-3">
-        <div class="card card-pad">
-          <div class="icon-wrapper">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-          </div>
-          <h3 class="h3">Valorizar para vender ou rentabilizar</h3>
-          <p class="muted"><strong>Legalização para o condomínio.</strong> Preço fixo acordado, processo completo, sem surpresas — para o ativo ficar vendável ou pronto a gerar rendimento.</p>
-          <div class="service-image-wrapper">
-            <img src="assets/images/contrato.png" alt="Legalização: documentos e contrato" class="service-image-large" />
-          </div>
-        </div>
-        <div class="card card-pad">
-          <div class="icon-wrapper">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="12" y1="1" x2="12" y2="23"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-          </div>
-          <h3 class="h3">Liquidez rápida para o condomínio</h3>
-          <p class="muted"><strong>Compra direta.</strong> Fazemos proposta e compramos no estado atual — assumimos o risco burocrático e jurídico para o condomínio fechar o tema de forma simples.</p>
-          <div class="service-image-wrapper">
-            <img src="assets/images/compra.png" alt="Compra direta: entrega de chaves após acordo" class="service-image-large" />
-          </div>
-        </div>
-        <div class="card card-pad">
-          <div class="icon-wrapper">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-          </div>
-          <h3 class="h3">Sem investimento inicial acordado à partida</h3>
-          <p class="muted"><strong>Modelos flexíveis.</strong> Honorários alinhados com o condomínio, possibilidade de compra posterior ou outros arranjos — desenhados para a realidade financeira do prédio e para o que a assembleia consiga aprovar.</p>
-          <p class="muted"><b>Flexibilidade máxima — combinada caso a caso.</b></p>
-          <div class="service-image-wrapper">
-            <img src="assets/images/papelada.png" alt="Documentação e opções flexíveis" class="service-image-large" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section" id="lead-form">
-      <div class="container">
-        <div class="card card-pad section-bg" style="--bg-img: url('assets/images/casasdaporteira3.png');">
-          <h2 class="h2">Quanto vale desbloquear a sua casa da porteira?</h2>
-          <p class="muted">
-            Conte-nos o que está bloqueado. Respondemos em 24h com uma primeira leitura de viabilidade e os cenários que fazem sentido — sem compromisso.
-          </p>
-          <a class="btn" href="contacto.html">👉 Pedir análise gratuita (24h)</a>
+        <div style="text-align:center; margin-top: 28px;">
+          <a class="btn" href="artigos.html" style="background: transparent; color: var(--brand) !important; border: 2px solid var(--brand);">Ver todos os artigos</a>
         </div>
       </div>
     </section>

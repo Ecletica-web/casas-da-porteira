@@ -69,132 +69,209 @@ src="https://www.facebook.com/tr?id=866243689800269&ev=PageView&noscript=1"
       </nav>
     </div>
   </header>
-  <main class="container">
-    <section class="section">
-      <div class="hero">
-        <div class="card card-pad section-bg" style="--bg-img: url('assets/images/background.png');">
-          <span class="badge">Avaliação gratuita para condomínios</span>
-          <h1 class="h1" style="margin-top:12px;">Três caminhos — o certo depende do diagnóstico</h1>
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="sc-section" style="padding-top: 32px;">
+      <div class="sc-hero">
+        <div class="sc-hero-copy">
+          <span class="badge">Serviços · Condomínios</span>
+          <h1 class="h1">Três caminhos — o certo escolhe-se depois do diagnóstico</h1>
           <p class="lead">
-            Cada casa da porteira é diferente. O que muda o jogo é escolher a <strong>solução certa</strong> para o condomínio — não empurrar todos para o mesmo procedimento técnico.
+            Cada casa da porteira é diferente. O que muda o jogo é escolher a <strong>solução certa</strong> para o condomínio — não empurrar todos para o mesmo procedimento.
           </p>
-          <a class="btn" href="contacto.html">👉 Pedir análise gratuita (24h)</a>
+          <div class="sc-hero-ctas">
+            <a class="btn" href="contacto.html">Pedir análise gratuita</a>
+            <a class="btn" href="#servicos" style="background: transparent; color: var(--brand) !important; border: 2px solid var(--brand);">Ver serviços</a>
+          </div>
         </div>
-        <div>
-          <div class="hero-media">
-            <img src="assets/images/Rua Bonita.png" alt="Rua Bonita" />
+        <div class="sc-hero-image">
+          <img src="assets/images/Rua Bonita.png" alt="Rua bonita em Lisboa com edifícios antigos" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES LIST (hover) ================= -->
+    <section class="sc-section" id="servicos">
+      <div class="sc-section-title">
+        <span class="eyebrow">Serviços</span>
+        <h2>Serviços pensados para o ciclo completo</h2>
+        <p>Desde o diagnóstico até à venda ou rentabilização — sem passos "órfãos".</p>
+      </div>
+      <div class="container">
+        <div class="sc-services">
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Diagnóstico de viabilidade (24h)</h3>
+              <p>Análise legal e urbanística do caso, documentos mínimos e primeiras leituras. Dizemos logo se faz sentido avançar.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/lisboa.png" alt="Diagnóstico" /></div>
+            <a class="sc-service-arrow" href="contacto.html" aria-label="Pedir diagnóstico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Projeto de arquitetura</h3>
+              <p>Adequado ao existente, alinhado com o enquadramento urbanístico e apto para licenciamento ou comunicação prévia.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/casa reabilitada.png" alt="Arquitetura" /></div>
+            <a class="sc-service-arrow" href="contacto.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Licenciamento e licença de utilização</h3>
+              <p>Submissão, acompanhamento e resposta a pareceres da Câmara. Chegamos até à emissão da licença.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/papelada.png" alt="Licenciamento" /></div>
+            <a class="sc-service-arrow" href="artigos/licenca-utilizacao-casa-porteira.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Título constitutivo e registos</h3>
+              <p>Alterações ao título, constituição de fração autónoma, atualização na Conservatória e Finanças.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/contrato.png" alt="Título constitutivo" /></div>
+            <a class="sc-service-arrow" href="artigos/titulo-constitutivo-permilagem-casa-porteira.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Apoio ao condomínio e assembleia</h3>
+              <p>Esclarecimentos em assembleia, modelos de ata, maiorias e procurações. Menos reuniões vagas.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/azulejos.png" alt="Assembleia" /></div>
+            <a class="sc-service-arrow" href="artigos/maiorias-assembleia-condominio.html" aria-label="Saber mais">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-service">
+            <span class="sc-service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </span>
+            <div class="sc-service-body">
+              <h3>Compra direta</h3>
+              <p>Alternativa à legalização: proposta firme ao condomínio para comprar no estado atual, assumindo todo o risco.</p>
+            </div>
+            <div class="sc-service-thumb"><img src="assets/images/compra.png" alt="Compra" /></div>
+            <a class="sc-service-arrow" href="contacto.html" aria-label="Pedir proposta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="sc-services-cta">
+            <p class="h3">Não sabe qual dos caminhos serve ao seu caso?</p>
+            <a class="btn" href="contacto.html">Pedir diagnóstico gratuito</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="models-container" style="background: rgb(239, 246, 255); border: 1px solid rgba(0,0,0,.06); border-radius: var(--radius); box-shadow: var(--shadow); padding: 48px; max-width: var(--max); margin: 0 auto;">
-        <h2 class="h2" style="margin-top: 0;">Os três modelos (por resultado)</h2>
-        <div class="grid-3" style="max-width: 100%; margin: 0;">
-        <div class="card card-pad">
-          <div class="icon-wrapper">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-          </div>
-          <h3 class="h3">1. Valorizar e legalizar (condomínio mantém o ativo)</h3>
-          <p class="muted">
-            <strong>Legalização completa.</strong> O condomínio mantém a fração — o objetivo é ficar com um imóvel regularizado para vender melhor, arrendar ou aplicar o valor.
-          </p>
-          <p class="muted">
-            Após a legalização, pode:
-          </p>
-          <ul>
-            <li>vender</li>
-            <li>arrendar</li>
-            <li>usar o valor para obras</li>
-            <li>distribuir pelos condóminos</li>
-          </ul>
-          <p class="muted">
-            Preço fixo acordado à partida.<br>
-            Processo integralmente gerido por nós.
-          </p>
-          <div class="service-image-wrapper">
-            <img src="assets/images/contrato.png" alt="Legalização: documentos e contrato" class="service-image-large" />
-          </div>
-        </div>
-
-        <div class="card card-pad">
-          <div class="icon-wrapper">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="12" y1="1" x2="12" y2="23"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-          </div>
-          <h3 class="h3">2. Liquidez rápida (compra direta)</h3>
-          <p class="muted">
-            Se o condomínio quiser <strong>encerrar o assunto com dinheiro na mesa</strong> e sem gerir o processo durante meses:
-          </p>
-          <ul>
-            <li>avaliamos a situação</li>
-            <li>fazemos uma proposta</li>
-            <li>compramos no estado atual</li>
-          </ul>
-          <p class="muted">
-            Assumimos todo o risco legal e burocrático.
-          </p>
-          <div class="service-image-wrapper">
-            <img src="assets/images/compra.png" alt="Compra direta: entrega de chaves após acordo" class="service-image-large" />
-          </div>
-        </div>
-
-        <div class="card card-pad">
-          <div class="icon-wrapper">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-              <line x1="12" y1="22.08" x2="12" y2="12"></line>
-            </svg>
-          </div>
-          <h3 class="h3">3. Modelo flexível (sem investimento inicial acordado à partida)</h3>
-          <p class="muted">
-            Nem todos os prédios têm caixa ou vontade política para um fee completo logo de início. Por isso combinamos <strong>honorários</strong>, <strong>compra posterior</strong> ou outros arranjos com o condomínio — sempre com transparência e alinhados ao que a assembleia conseguir aprovar (muitas vezes por unanimidade).
-          </p>
-          <p class="muted">
-            O objetivo é uma solução que o condomínio aguente financeira e politicamente — sem surpresas.
-          </p>
-          <div class="service-image-wrapper">
-            <img src="assets/images/papelada.png" alt="Documentação e opções flexíveis" class="service-image-large" />
-          </div>
-        </div>
+    <!-- ================= PLANS (3 models pricing style) ================= -->
+    <section class="sc-section">
+      <div class="sc-section-title">
+        <span class="eyebrow">Três modelos</span>
+        <h2>Por resultado, não por procedimento</h2>
+        <p>O objetivo do condomínio vem primeiro. O procedimento técnico adapta-se.</p>
       </div>
+      <div class="container">
+        <div class="sc-plans">
+          <div class="sc-plan">
+            <span class="sc-plan-tag">Mantém o ativo</span>
+            <h3 class="sc-plan-title">Valorizar e legalizar</h3>
+            <p class="sc-plan-subtitle">Condomínio mantém a fração. Legalizamos para depois vender, arrendar ou aplicar o valor.</p>
+            <p class="sc-plan-price">Preço fixo<small>acordado à partida</small></p>
+            <div class="sc-plan-divider"></div>
+            <ul class="sc-plan-features">
+              <li>Projeto de arquitetura</li>
+              <li>Licenciamento e licença de utilização</li>
+              <li>Título constitutivo e registos</li>
+              <li>Apoio em assembleia</li>
+              <li>Processo gerido integralmente por nós</li>
+            </ul>
+            <a class="btn" href="contacto.html">Pedir análise</a>
+          </div>
+
+          <div class="sc-plan sc-plan--featured">
+            <span class="sc-plan-tag">Mais comum</span>
+            <h3 class="sc-plan-title">Liquidez rápida (compra direta)</h3>
+            <p class="sc-plan-subtitle">O condomínio fecha o tema com dinheiro na mesa. Sem gerir processos durante meses.</p>
+            <p class="sc-plan-price">Proposta firme<small>sob diagnóstico</small></p>
+            <div class="sc-plan-divider"></div>
+            <ul class="sc-plan-features">
+              <li>Avaliação técnica e de mercado</li>
+              <li>Proposta formal em poucos dias</li>
+              <li>Compra no estado atual</li>
+              <li>Assumimos todo o risco legal e burocrático</li>
+              <li>Condomínio distribui o valor</li>
+            </ul>
+            <a class="btn" href="contacto.html">Pedir proposta</a>
+          </div>
+
+          <div class="sc-plan">
+            <span class="sc-plan-tag">À medida</span>
+            <h3 class="sc-plan-title">Modelo flexível</h3>
+            <p class="sc-plan-subtitle">Para condomínios sem caixa ou sem consenso para um fee completo logo de início.</p>
+            <p class="sc-plan-price">Caso a caso<small>combinado</small></p>
+            <div class="sc-plan-divider"></div>
+            <ul class="sc-plan-features">
+              <li>Sem investimento inicial acordado</li>
+              <li>Honorários alinhados com o condomínio</li>
+              <li>Possibilidade de compra posterior</li>
+              <li>Desenhado para passar em assembleia</li>
+              <li>Transparência sobre ganhos e riscos</li>
+            </ul>
+            <a class="btn" href="contacto.html">Falar connosco</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ================= NARRATIVE CARDS ================= -->
+    <section class="sc-section">
       <div class="container">
         <div class="card card-pad">
           <div class="image-text-grid">
             <div>
               <h2 class="h2">Por detrás do resultado há um processo exigente</h2>
               <p class="muted">
-                Cada casa da porteira é diferente — e o maior desafio costuma ser <strong>coordenar decisões</strong> (condomínio, técnico, câmara, registos), não só “saber o que a lei diz”.
+                Cada casa da porteira é diferente — e o maior desafio costuma ser <strong>coordenar decisões</strong> (condomínio, técnico, câmara, registos), não só "saber o que a lei diz".
               </p>
-              <p class="muted">
-                O processo costuma passar por várias camadas:
-              </p>
+              <p class="muted">O processo costuma passar por várias camadas:</p>
               <ol>
                 <li>enquadramento urbanístico</li>
-                <li>definição do tipo de procedimento (licenciamento / comunicação)</li>
+                <li>tipo de procedimento (licenciamento / comunicação)</li>
                 <li>projeto de arquitetura adequado ao existente</li>
                 <li>decisões formais do condomínio</li>
                 <li>regularização jurídica e registal</li>
                 <li>validação final para venda ou uso</li>
               </ol>
               <p class="muted">
-                Um erro numa fase pode <b>bloquear tudo mais à frente</b>.
-              </p>
-              <p class="muted">
-                Consulte o nosso <a href="artigos/guia-legalizar-casa-porteira.html">guia definitivo para legalizar casa da porteira</a> para mais detalhe sobre passos, bloqueios e prazos.
+                Consulte o nosso <a href="artigos/guia-legalizar-casa-porteira.html">guia definitivo para legalizar casa da porteira</a>.
               </p>
             </div>
             <img src="assets/images/papelada.png" alt="Documentos e processo" class="content-image-small" />
@@ -203,53 +280,17 @@ src="https://www.facebook.com/tr?id=866243689800269&ev=PageView&noscript=1"
       </div>
     </section>
 
-    <section class="section">
+    <section class="sc-section" style="padding-top: 0;">
       <div class="container">
-        <div class="card card-pad">
-          <div class="image-text-grid">
-            <div>
-              <h2 class="h2">A nossa abordagem</h2>
-              <p class="muted">
-                Nós estruturamos o processo para:
-              </p>
-              <ul>
-                <li>reduzir riscos legais</li>
-                <li>evitar retrabalho</li>
-                <li>proteger o condomínio</li>
-                <li>manter tudo claro para os condóminos</li>
-              </ul>
-              <p class="muted">
-                Trabalhamos com documentos, prazos e decisões <b>bem definidas desde o início</b>.
-              </p>
-            </div>
-            <img src="assets/images/contrato.png" alt="Documentos e abordagem estruturada" class="content-image-small" />
+        <div class="sc-dark-cta">
+          <div>
+            <h2>Para assembleias de condomínio: linguagem clara, sem promessas vagas</h2>
+            <p>Explicamos o que é possível, o que não é, riscos reais, custos reais e timings prováveis — sem linguagem técnica desnecessária. Ajudamos a que a assembleia decida com informação.</p>
+            <a class="btn" href="contacto.html">Pedir esclarecimento em assembleia</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="card card-pad">
-          <div class="image-text-grid">
-            <div>
-              <h2 class="h2">Para assembleias de condomínio</h2>
-              <p class="muted">
-                Explicamos:
-              </p>
-              <ul>
-                <li>o que é possível</li>
-                <li>o que não é</li>
-                <li>riscos reais</li>
-                <li>custos reais</li>
-                <li>timings prováveis</li>
-              </ul>
-              <p class="muted">
-                Sem promessas vagas.<br>
-                Sem linguagem técnica desnecessária.
-              </p>
-            </div>
-            <img src="assets/images/casa reabilitada.png" alt="Interior reabilitado, espaço luminoso" class="content-image-small" />
+          <div class="sc-dark-cta-side">
+            <p class="sc-stat-num">24h</p>
+            <p class="sc-stat-label">primeira resposta com leitura do caso</p>
           </div>
         </div>
       </div>
